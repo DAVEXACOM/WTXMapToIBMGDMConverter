@@ -1,0 +1,37 @@
+<!ELEMENT DB_Source (DB_Source.MDQ?, Command?, DB_Source.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT DB_Source.Transaction EMPTY>
+<!ATTLIST DB_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST DB_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST DB_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST DB_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT DB_Source.MDQ (FilePath?, DBConnection?, Query?, DocumentVerification?)>
+
+<!ELEMENT DB_Target (DB_Target.MDQ?, Command?, DB_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT DB_Target.MDQ (FilePath?, DBConnection?, Table?, DocumentVerification?)>
+
+<!ELEMENT DB_Target.Transaction EMPTY>
+<!ATTLIST DB_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST DB_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST DB_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST DB_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT DBConnection (#PCDATA)>
+<!ELEMENT Query (#PCDATA)>
+<!ELEMENT Table (#PCDATA)>
+<!ELEMENT DocumentVerification (#PCDATA)>
+
+<!ELEMENT AQ_Source (Command?, AQ_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT AQ_Source.Transaction EMPTY>
+<!ATTLIST AQ_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST AQ_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST AQ_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST AQ_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT AQ_Target (Command?, AQ_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT AQ_Target.Transaction EMPTY>
+<!ATTLIST AQ_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST AQ_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST AQ_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST AQ_Target.Transaction Warnings (Ignore | Fail) "Ignore">

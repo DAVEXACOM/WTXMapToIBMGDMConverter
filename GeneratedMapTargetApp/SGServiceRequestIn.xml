@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SGServiceRequest>
+<SrhServiceRequestName>
+<SrhInterfaceCode>CUST</SrhInterfaceCode>
+<SrhServiceCode>SCUSTNUM</SrhServiceCode>
+<SrhRequestVersion>V002</SrhRequestVersion>
+</SrhServiceRequestName>
+<SrhIdentity>
+<SrhSource>CRMZZZZZ</SrhSource>
+<SrhOrigSystem>CRM</SrhOrigSystem>
+<SrhUserContext>M111111</SrhUserContext>
+<SrhFunctional>SBXX</SrhFunctional>
+</SrhIdentity>
+<SrhExtension>LBREAK=YES,NOTYPEDEF=YES</SrhExtension>
+<BusinessData>
+<CustDtlRq>
+<CustNum>46162</CustNum>
+</CustDtlRq>
+</BusinessData>
+</SGServiceRequest>

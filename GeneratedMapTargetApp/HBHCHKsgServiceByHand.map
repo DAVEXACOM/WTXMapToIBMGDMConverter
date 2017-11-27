@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/HB37.xsd"/>
+    <output path="/SGServiceAll.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="HBHCHKsgServiceByHand">
+        <input path="mb:msg(HBHCHKRPY,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_HBHCHKRPY"/>
+        <output path="mb:msg(SGServiceReply,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_SGServiceReply"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/Properties"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/Properties"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/TRCDNAME"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhVersion"/>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/TRMLIDNT"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhProcessCode"/>
+        </move>
+        <convert>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/PORTIDNF"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/@ServiceId"/>
+        </convert>
+        <move>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/STUS"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/SrchStatus"/>
+        </move>
+        <assign value="&quot;999111&quot;">
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CISKey"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

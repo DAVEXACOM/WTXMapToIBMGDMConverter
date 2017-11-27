@@ -1,0 +1,18 @@
+<!-- VAN adapter -->
+
+
+<!ELEMENT VAN_Source (Command?, VAN_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT VAN_Target (Command?, VAN_Target.Transaction?, Retry?, DocumentVerification?)>
+
+
+<!ELEMENT VAN_Source.Transaction EMPTY>
+<!ATTLIST VAN_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST VAN_Source.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST VAN_Source.Transaction Scope (Map) "Map">
+<!ATTLIST VAN_Source.Transaction Warnings (Ignore | Fail ) "Ignore">
+
+<!ELEMENT VAN_Target.Transaction EMPTY>
+<!ATTLIST VAN_Target.Transaction OnSuccess (Create) "Create">
+<!ATTLIST VAN_Target.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST VAN_Target.Transaction Scope (Map) "Map">
+<!ATTLIST VAN_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">

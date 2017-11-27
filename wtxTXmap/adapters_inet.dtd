@@ -1,0 +1,115 @@
+<!-- Internet adapters -->
+
+<!ELEMENT EMAIL_Source (Command?, EMAIL_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT FTP_Source   (Command?, FTP_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT GZIP_Source  (Command?, GZIP_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT HTTP_Source  (Command?, HTTP_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MIME_Source (Command?, MIME_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT SMIME_Source (Command?, SMIME_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT XMLDATA_Source (Command?, XMLDATA_Source.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT EMAIL_Target (Command?, EMAIL_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT FTP_Target   (Command?, FTP_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT GZIP_Target  (Command?, GZIP_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT HTTP_Target  (Command?, HTTP_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MIME_Target (Command?, MIME_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT SMIME_Target (Command?, SMIME_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT XMLDATA_Target (Command?, XMLDATA_Target.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT EMAIL_Source.Transaction EMPTY>
+<!ATTLIST EMAIL_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST EMAIL_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST EMAIL_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST EMAIL_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT FTP_Source.Transaction EMPTY>
+<!ATTLIST FTP_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST FTP_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FTP_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FTP_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT GZIP_Source.Transaction EMPTY>
+<!ATTLIST GZIP_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST GZIP_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST GZIP_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST GZIP_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT HTTP_Source.Transaction EMPTY>
+<!ATTLIST HTTP_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST HTTP_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST HTTP_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST HTTP_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT MIME_Source.Transaction EMPTY>
+<!ATTLIST MIME_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST MIME_Source.Transaction OnFailure (Commit | Rollback) "Commit">
+<!ATTLIST MIME_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MIME_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SMIME_Source.Transaction EMPTY>
+<!ATTLIST SMIME_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST SMIME_Source.Transaction OnFailure (Commit | Rollback) "Commit">
+<!ATTLIST SMIME_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SMIME_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT XMLDATA_Source.Transaction EMPTY>
+<!ATTLIST XMLDATA_Source.Transaction OnSuccess (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST XMLDATA_Source.Transaction OnFailure (Rollback | Commit) "Commit">
+<!ATTLIST XMLDATA_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST XMLDATA_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT EMAIL_Target.Transaction EMPTY>
+<!ATTLIST EMAIL_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST EMAIL_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST EMAIL_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST EMAIL_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT FTP_Target.Transaction EMPTY>
+<!ATTLIST FTP_Target.Transaction OnSuccess (Create | CreateOnContent | Append) "Create">
+<!ATTLIST FTP_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FTP_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FTP_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT GZIP_Target.Transaction EMPTY>
+<!ATTLIST GZIP_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST GZIP_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST GZIP_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST GZIP_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT HTTP_Target.Transaction EMPTY>
+<!ATTLIST HTTP_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST HTTP_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST HTTP_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST HTTP_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT MIME_Target.Transaction EMPTY>
+<!ATTLIST MIME_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST MIME_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MIME_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MIME_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SMIME_Target.Transaction EMPTY>
+<!ATTLIST SMIME_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST SMIME_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SMIME_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SMIME_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT XMLDATA_Target.Transaction EMPTY>
+<!ATTLIST XMLDATA_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST XMLDATA_Target.Transaction OnFailure (Rollback | Commit) "Commit">
+<!ATTLIST XMLDATA_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST XMLDATA_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SNMP_Source (Command?, SNMP_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT SNMP_Source.Transaction EMPTY>
+<!ATTLIST SNMP_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST SNMP_Source.Transaction OnFailure (Commit | Rollback) "Commit">
+<!ATTLIST SNMP_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SNMP_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SNMP_Target (Command?, SNMP_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT SNMP_Target.Transaction EMPTY>
+<!ATTLIST SNMP_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST SNMP_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SNMP_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SNMP_Target.Transaction Warnings (Ignore | Fail) "Ignore">

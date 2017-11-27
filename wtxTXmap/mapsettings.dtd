@@ -1,0 +1,124 @@
+<!ELEMENT MapSettings (MapAudit, MapTrace, 
+                      (WorkSpace.File | WorkSpace.Memory), 
+                      (Century.Current | Century.Sliding), 
+                      (Validation.Standard | Validation.Custom), 
+                       Retry, 
+                      (Warnings.Every | Warnings.Custom),
+                      CodePageFallback)>
+
+<!ELEMENT MapAudit (BurstAudit, SummaryAudit, SettingsAudit, (AuditLocation.File | AuditLocation.Memory) )>
+<!ATTLIST MapAudit Switch %setswitch;>
+
+<!ELEMENT BurstAudit (( Data.Always | Data.Never | Data.OnBurstError | Data.OnBurstWarningOrError), (Execution.Always | Execution.Never | Execution.OnBurstError | Execution.OnBurstWarningOrError))>
+
+<!ELEMENT Data.Always EMPTY>
+<!ATTLIST Data.Always SizeValidation (WrongSize |TooLongTooShort ) "WrongSize">
+<!ELEMENT Data.Never EMPTY>
+<!ATTLIST Data.Never SizeValidation (WrongSize |TooLongTooShort ) "WrongSize">
+<!ELEMENT Data.OnBurstError EMPTY>
+<!ATTLIST Data.OnBurstError SizeValidation (WrongSize |TooLongTooShort ) "WrongSize">
+<!ELEMENT Data.OnBurstWarningOrError EMPTY>
+<!ATTLIST Data.OnBurstWarningOrError SizeValidation (WrongSize |TooLongTooShort ) "WrongSize">
+
+<!ELEMENT Execution.Always EMPTY>
+<!ELEMENT Execution.Never EMPTY>
+<!ELEMENT Execution.OnBurstError EMPTY>
+<!ELEMENT Execution.OnBurstWarningOrError EMPTY>
+
+<!ELEMENT SummaryAudit EMPTY>
+<!ATTLIST SummaryAudit execution (Always | Never | OnError | OnWarningOrError) "Never">
+
+<!ELEMENT SettingsAudit EMPTY>
+<!ATTLIST SettingsAudit data (Always | Never | OnError | OnWarningOrError) "Never">
+<!ATTLIST SettingsAudit map (Always | Never | OnError | OnWarningOrError) "Never">
+
+<!ELEMENT AuditLocation.File ((Directory.Map | Directory.Custom), 
+                              (FileName.Default | FileName.Unique | FileName.Custom) )>
+
+<!ATTLIST AuditLocation.File action (Create | Append) #IMPLIED>
+
+<!ELEMENT AuditLocation.Memory (#PCDATA)>
+<!ATTLIST AuditLocation.Memory sized (ON | OFF) "OFF">
+
+<!ELEMENT MapTrace (ContentTrace.File)>
+<!ATTLIST MapTrace Switch (ON | OFF) "OFF">
+
+<!ELEMENT ContentTrace.File ( TraceLocation.File, 
+            (InputContentTrace.ALL | InputContentTrace.CARD | InputContentTrace.RANGE | InputContentTrace.OFF), 
+            (RulesTrace.ALL | RulesTrace.CARD | RulesTrace.OFF),
+            (SummaryContentTrace.ON | SummaryContentTrace.OFF) )>
+<!ATTLIST ContentTrace.File Switch (ON | OFF) "OFF">
+
+<!ELEMENT TraceLocation.File ( (Directory.Map | Directory.Custom), (FileName.Default | FileName.Custom) )>
+
+<!ELEMENT Directory.Map EMPTY>
+<!ELEMENT Directory.Custom (#PCDATA)>
+
+<!ELEMENT FileName.Default EMPTY>
+<!ATTLIST FileName.Default action (Create | Append) #IMPLIED>
+
+<!ELEMENT FileName.Unique EMPTY>
+
+<!ELEMENT FileName.Custom (#PCDATA)>
+<!ATTLIST FileName.Custom action (Create | Append) "Create">
+
+<!ELEMENT InputContentTrace.ALL EMPTY>
+<!ELEMENT RulesTrace.ALL EMPTY>
+
+<!ELEMENT InputContentTrace.CARD EMPTY>
+<!ATTLIST InputContentTrace.CARD CardNumber %text;>
+
+<!ELEMENT RulesTrace.CARD EMPTY>
+<!ATTLIST RulesTrace.CARD CardNumber %text;>
+
+<!ELEMENT InputContentTrace.RANGE EMPTY>
+<!ATTLIST InputContentTrace.RANGE StartObject %text;>
+<!ATTLIST InputContentTrace.RANGE EndObject %text;>
+
+<!ELEMENT InputContentTrace.OFF EMPTY>
+<!ELEMENT RulesTrace.OFF EMPTY>
+
+<!ELEMENT SummaryContentTrace.ON EMPTY>
+<!ELEMENT SummaryContentTrace.OFF EMPTY>
+
+<!ELEMENT WorkSpace.Memory EMPTY>
+<!ATTLIST WorkSpace.Memory PageSize %text;>
+<!ATTLIST WorkSpace.Memory PageCount %text;>
+
+<!ELEMENT WorkSpace.File ((Directory.Map | Directory.Custom), (WorkFilePrefix.MapName | WorkFilePrefix.Unique))>
+<!ATTLIST WorkSpace.File PageSize %text;>
+<!ATTLIST WorkSpace.File PageCount %text;>
+
+<!ELEMENT WorkFilePrefix.MapName EMPTY>
+<!ATTLIST WorkFilePrefix.MapName action (Delete | Create) "Delete">
+
+<!ELEMENT WorkFilePrefix.Unique EMPTY> <!-- these are always deleted -->
+
+<!ELEMENT Century.Current EMPTY>
+
+<!ELEMENT Century.Sliding EMPTY>
+<!ATTLIST Century.Sliding CCLookup %textopt;>
+
+<!ELEMENT Validation.Standard EMPTY>
+<!ELEMENT Validation.Custom EMPTY>
+<!ATTLIST Validation.Custom OnValidationError (Continue | Stop) "Continue">
+<!ATTLIST Validation.Custom RestrictionError (Validate | IgnoreNoWarnings | Ignore) "Validate">
+<!ATTLIST Validation.Custom SizeError (Validate | Ignore) "Validate">
+<!ATTLIST Validation.Custom PresentationError (Validate | Ignore) "Validate">
+
+<!ELEMENT Warnings.Every EMPTY>
+<!ATTLIST Warnings.Every action (ignore | fail | warn) "warn">
+
+<!ELEMENT Warnings.Custom EMPTY>
+<!ATTLIST Warnings.Custom OneOrMoreOutputsWasInvalid (ignore | fail | warn) "warn">
+<!ATTLIST Warnings.Custom PageUseCountError (ignore | fail | warn) "warn">
+<!ATTLIST Warnings.Custom InputValidButUnknownDataFound (ignore | fail | warn) "warn">
+<!ATTLIST Warnings.Custom OutputTypeInError (ignore | fail | warn) "warn">                              
+<!ATTLIST Warnings.Custom OutputTypeContainsError (ignore | fail | warn) "warn">
+<!ATTLIST Warnings.Custom InputTypeContainsError (ignore | fail | warn) "warn">                          
+<!ATTLIST Warnings.Custom OutputValidButUnknownDataFound (ignore | fail | warn) "warn">           
+<!ATTLIST Warnings.Custom TooFewPagesRequestedMoreAllocated (ignore | fail | warn) "warn">           
+
+<!ELEMENT CodePageFallback EMPTY>
+<!ATTLIST CodePageFallback Fallback (SKIP | SUBSTITUTE) "SKIP">
+<!ATTLIST CodePageFallback SubstituteValue CDATA #IMPLIED>

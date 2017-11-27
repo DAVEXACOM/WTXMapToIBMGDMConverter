@@ -1,0 +1,21 @@
+<!-- File Adapter -->
+
+<!ELEMENT FILE_Source (FilePath?, FILE_Source.Transaction?,Retry?, DocumentVerification?)>
+<!ELEMENT FILE_Target (FilePath?, FILE_Target.Transaction?,Retry?, DocumentVerification?)>
+
+<!-- File_Backup not used
+**!ELEMENT File_Backup (FilePath)**
+**!ATTLIST File_Backup Action (Create| Append) "Create"**
+-->
+
+<!ELEMENT FILE_Source.Transaction EMPTY>
+<!ATTLIST FILE_Source.Transaction OnSuccess (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST FILE_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FILE_Source.Transaction Scope (Map | Burst) "Map">
+
+<!ELEMENT FILE_Target.Transaction EMPTY>
+<!ATTLIST FILE_Target.Transaction OnSuccess CDATA #REQUIRED>
+<!ATTLIST FILE_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FILE_Target.Transaction Scope (Map | Card) "Map">
+
+<!-- File Adapter -->

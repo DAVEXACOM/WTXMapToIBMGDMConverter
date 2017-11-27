@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmFileInput.msgnode="ComIbmFileInput.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="TestGDMfromWTX.msgflow" nsPrefix="TestGDMfromWTX.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="TestGDMfromWTX" bundleName="TestGDMfromWTX" pluginId="GeneratedMapTargetApp"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/GeneratedMapTargetApp/icons/full/obj16/TestGDMfromWTX.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/GeneratedMapTargetApp/icons/full/obj30/TestGDMfromWTX.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="324,219" mappingExpression="msl://{default}#SGServiceHBHCHK">
+        <translation xmi:type="utility:ConstantString" string="SGServiceToHBHCHK"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="54,155" inputDirectory="C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMGeneratorWTXv1.0\GeneratedMapTargetApp\Test" filenamePattern="SGServiceRequestIn.xml" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="XMLNSC" waitInterval="8">
+        <translation xmi:type="utility:ConstantString" string="File Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="709,115" outputDirectory="C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMGeneratorWTXv1.0\GeneratedMapTargetApp\Test" outputFilename="HBHCHKReq.txt">
+        <translation xmi:type="utility:ConstantString" string="File Output"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="581,165" destination="file" filePath="C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMGeneratorWTXv1.0\GeneratedMapTargetApp\Traces\WTXConvOutCBL.txt" pattern="${Root}">
+        <translation xmi:type="utility:ConstantString" string="TrcOut"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="302,26" mappingExpression="msl://{default}#SGServiceHBHCHKByHand">
+        <translation xmi:type="utility:ConstantString" string="SGServiceToHBHCHKByHand"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="214,165" destination="file" filePath="C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMGeneratorWTXv1.0\GeneratedMapTargetApp\Traces\WTXConvInXML.txt" pattern="${Root}">
+        <translation xmi:type="utility:ConstantString" string="TrcIn"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

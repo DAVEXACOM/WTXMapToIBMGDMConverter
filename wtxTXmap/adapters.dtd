@@ -1,0 +1,264 @@
+<!-- Retry and setswitch are in mms.dtd -->
+<!-- Aggregate is in adapters.dtd -->
+
+<!-- Transaction and Connect arguments uniquely define a connection.
+     Connect defines a connection that can be pooled.
+     Select arguments can have wildcards.
+     A system link is defined as a Connect & Select match, where a source is a sub-set of a target -->
+
+<!ENTITY % Source "(Alliance_Source | MyAdapter_Source | ArchiveTar_Source | ArchiveZip_Source | AQ_Source |
+                  BAT_Source | BMQ_Source | COM_Source | DB_Source | EMAIL_Source | FHL_Source | FSMGR_Source | 
+                  FILE_Source | FTP_Source | GZIP_Source | HTTP_Source | IMX_Source | Java_Source | JCA_Source | JMS_Source | JNDI_Source | LDAP_Source |
+                  BMQC_Source | MessageQServer_Source | MIME_Source | 
+                  MQSC_Source | MQS_Source | 
+                  MQSClient_Source | MQSServer_Source |
+                  MSMQ_Source |OracleAQ_Source | PSCI_Source |
+                  ALE_Source | BAPI_Source | BDC_Source | BWSB_Source |
+                  ROMA_Source | SIEBELCOM_Source | SMIME_Source | SHL_Source | SNMP_Source | RV_Source | RVTX_Source | TIBRV_Source | 
+                  TUX_Source | TUXMT_Source | VAN_Source | XMLDATA_Source | BUF_Source | APP_Source | 
+                  CD_Source | MLLP_Source | JAXB_Source | Sterling_Source | SPE_Source )">
+
+<!ENTITY % Target "(Alliance_Target | MyAdapter_Target | ArchiveTar_Target | ArchiveZip_Target | AQ_Target |
+                  BAT_Target | BMQ_Target | COM_Target | DB_Target | EMAIL_Target | FHL_Target | FSMGR_Target | 
+                  FILE_Target | FTP_Target | GZIP_Target | HTTP_Target | IMX_Target | Java_Target | JCA_Target | JMS_Target | JNDI_Target | LDAP_Target |
+                  BMQC_Target | MessageQServer_Target | MIME_Target |
+                  MQSClient_Target | MQSServer_Target |
+                  MQSC_Target | MQS_Target |
+                  MSMQ_Target |OracleAQ_Target | PSCI_Target |
+                  ALE_Target | BAPI_Target | BDC_Target | BWSB_Target |
+                  ROMA_Target | RVTX_Target | SIEBELCOM_Target | SMIME_Target | SHL_Target | SNMP_Target | RV_Target | TIBRV_Target | 
+                  TUX_Target | TUXMT_Target | VAN_Target | XMLDATA_Target  | 
+                  SINK_Target | APP_Target | CD_Target | MLLP_Target | JAXB_Target | Sterling_Target | SPE_Target )">
+
+
+<!ELEMENT APP_Source  (Command?, APP_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT APP_Source.Transaction EMPTY>
+<!ATTLIST APP_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST APP_Source.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST APP_Source.Transaction Scope (Card) "Card">
+<!ATTLIST APP_Source.Transaction Warnings (Ignore | Fail ) "Ignore">
+
+<!ELEMENT APP_Target  (Command?, APP_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT APP_Target.Transaction EMPTY>
+<!ATTLIST APP_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST APP_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST APP_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST APP_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT BUF_Source (Command?, DocumentVerification?)>
+
+<!ELEMENT SINK_Target  (Command?, SINK_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SINK_Target.Transaction EMPTY>
+<!ATTLIST SINK_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST SINK_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SINK_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST SINK_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT Java_Source  (Command?, Java_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT Java_Source.Transaction EMPTY>
+<!ATTLIST Java_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST Java_Source.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST Java_Source.Transaction Scope (Card) "Card">
+<!ATTLIST Java_Source.Transaction Warnings (Ignore | Fail ) "Ignore">
+
+<!ELEMENT Java_Target  (Command?, Java_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT Java_Target.Transaction EMPTY>
+<!ATTLIST Java_Target.Transaction OnSuccess (Create) "Create">
+<!ATTLIST Java_Target.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST Java_Target.Transaction Scope (Card) "Card">
+<!ATTLIST Java_Target.Transaction Warnings (Ignore | Fail ) "Ignore">
+
+<!ELEMENT Backup (BackupLocation.File)> 
+<!ATTLIST Backup Switch (ON | OFF) "OFF">
+<!ATTLIST Backup When (Always | OnError) "Always">
+
+<!ELEMENT BackupLocation.File (Directory.Map?, Directory.Custom?, FileName.Custom?, FileName.Unique?)> 
+
+<!ELEMENT MetaDataLocation (#PCDATA)>
+
+<!ELEMENT BMQ_Source  (Command?, BMQ_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT BMQ_Source.Transaction EMPTY>
+<!ATTLIST BMQ_Source.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST BMQ_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BMQ_Source.Transaction Scope (Map | Card | Burst) "Map">
+<!ATTLIST BMQ_Source.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT BMQ_Target  (Command?, BMQ_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT BMQ_Target.Transaction EMPTY>
+<!ATTLIST BMQ_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST BMQ_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BMQ_Target.Transaction Scope (Map | Card | Burst) "Map">
+<!ATTLIST BMQ_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT COM_Source EMPTY>
+<!ATTLIST COM_Source Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT COM_Target  (Command?, COM_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT COM_Target.Transaction EMPTY>
+<!ATTLIST COM_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST COM_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST COM_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST COM_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT JCA_Source  (Command?, JCA_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JCA_Source.Transaction EMPTY>
+<!ATTLIST JCA_Source.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST JCA_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JCA_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST JCA_Source.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT JCA_Target  (Command?, JCA_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JCA_Target.Transaction EMPTY>
+<!ATTLIST JCA_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST JCA_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JCA_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST JCA_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT JMS_Source  (Command?, JMS_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JMS_Source.Transaction EMPTY>
+<!ATTLIST JMS_Source.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST JMS_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JMS_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST JMS_Source.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT JMS_Target  (Command?, JMS_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JMS_Target.Transaction EMPTY>
+<!ATTLIST JMS_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST JMS_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JMS_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST JMS_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT JNDI_Source  (Command?, JNDI_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JNDI_Source.Transaction EMPTY>
+<!ATTLIST JNDI_Source.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST JNDI_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JNDI_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST JNDI_Source.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT JNDI_Target  (Command?, JNDI_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JNDI_Target.Transaction EMPTY>
+<!ATTLIST JNDI_Target.Transaction OnSuccess CDATA #IMPLIED>
+<!ATTLIST JNDI_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JNDI_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST JNDI_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT MLLP_Source  (Command?, MLLP_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MLLP_Source.Transaction EMPTY>
+<!ATTLIST MLLP_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST MLLP_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MLLP_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MLLP_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT MLLP_Target  (Command?, MLLP_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MLLP_Target.Transaction EMPTY>
+<!ATTLIST MLLP_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST MLLP_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MLLP_Target.Transaction Scope (Map) "Map">
+<!ATTLIST MLLP_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT CD_Source  (Command?, CD_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT CD_Source.Transaction EMPTY>
+<!ATTLIST CD_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST CD_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST CD_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST CD_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT CD_Target  (Command?, CD_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT CD_Target.Transaction EMPTY>
+<!ATTLIST CD_Target.Transaction OnSuccess CDATA "Create">
+<!ATTLIST CD_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST CD_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST CD_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT JAXB_Source  (Command?, JAXB_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JAXB_Source.Transaction EMPTY>
+<!ATTLIST JAXB_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST JAXB_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JAXB_Source.Transaction Scope (Burst | Card) "Card">
+<!ATTLIST JAXB_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT JAXB_Target  (Command?, JAXB_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT JAXB_Target.Transaction EMPTY>
+<!ATTLIST JAXB_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST JAXB_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST JAXB_Target.Transaction Scope (Burst | Card) "Card">
+<!ATTLIST JAXB_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT Sterling_Source  (Command?, Sterling_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT Sterling_Source.Transaction EMPTY>
+<!ATTLIST Sterling_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST Sterling_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST Sterling_Source.Transaction Scope (Burst | Card) "Card">
+<!ATTLIST Sterling_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT Sterling_Target  (Command?, Sterling_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT Sterling_Target.Transaction EMPTY>
+<!ATTLIST Sterling_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST Sterling_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST Sterling_Target.Transaction Scope (Burst | Card) "Card">
+<!ATTLIST Sterling_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+<!ELEMENT SPE_Source  (Command?, SPE_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SPE_Source.Transaction EMPTY>
+<!ATTLIST SPE_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST SPE_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SPE_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST SPE_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SPE_Target  (Command?, SPE_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SPE_Target.Transaction EMPTY>
+<!ATTLIST SPE_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST SPE_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SPE_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST SPE_Target.Transaction Warnings (Ignore | Fail | Warn) "Ignore">
+
+
+<!-- common to many adapters -->
+
+<!ELEMENT FilePath (#PCDATA)>
+<!ELEMENT Command (#PCDATA)>
+
+<!-- common to all adapters -->
+
+<!ENTITY % my_adapter SYSTEM "adapters_my.dtd">
+%my_adapter;
+
+<!-- archive includes ArchiveTar and ArchiveZip -->
+<!ENTITY % archive_adapter SYSTEM "adapters_archive.dtd">
+%archive_adapter;
+
+<!ENTITY % db_adapter SYSTEM "adapters_db.dtd">
+%db_adapter;
+
+<!-- EAI includes Peoplesoft, ALE, BAPI, BDC, Siebel adapters -->
+
+<!ENTITY % EAI_adapter SYSTEM "adapters_EAI.dtd">
+%EAI_adapter;
+
+<!ENTITY % file_adapter SYSTEM "adapters_file.dtd">
+%file_adapter;
+
+<!-- FS includes Alliance, FHL, IMX, FSMGR -->
+<!ENTITY % FS_adapter SYSTEM "adapters_FS.dtd">
+%FS_adapter;
+
+<!-- script includes BatchFile and SchellScript -->
+<!ENTITY % script_adapter SYSTEM "adapters_script.dtd">
+%script_adapter;
+
+<!-- inet includes EMAIL, FTP, HTTP, SMIME, XMLDATA -->
+<!ENTITY % inet_adapter SYSTEM "adapters_inet.dtd">
+%inet_adapter;
+
+<!ENTITY % LDAP_adapter SYSTEM "adapters_LDAP.dtd">
+%LDAP_adapter;
+
+
+<!-- MOM includes MessageQClient, MessageQServer, MQSeriesClient, MQSeriesServer, 
+                  MSMQ, OracleAQ, ROMA,
+                  TIBRV, TUXEDO, and TUXEDOMT  adapters -->
+<!ENTITY % MOM_adapter SYSTEM "adapters_MOM.dtd">
+%MOM_adapter;
+
+<!ENTITY % VAN_adapter SYSTEM "adapters_VAN.dtd">
+%VAN_adapter;

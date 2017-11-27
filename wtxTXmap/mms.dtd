@@ -1,0 +1,98 @@
+<!-- An MMS defines the export/import format of a Mercator map source file     -->
+
+<!ENTITY % text	"CDATA #REQUIRED">
+<!ENTITY % textopt	"CDATA #IMPLIED">
+<!ENTITY % setswitch  "(ON | OFF) #REQUIRED">
+
+<!ELEMENT Retry EMPTY>
+<!ATTLIST Retry Switch %setswitch;>
+<!ATTLIST Retry MaxAttempts %textopt;>
+<!ATTLIST Retry Interval %textopt;>
+
+<!ENTITY % mapsettings SYSTEM "mapsettings.dtd">
+%mapsettings;
+
+<!ENTITY % adapters SYSTEM "adapters.dtd">
+%adapters;
+
+<!ELEMENT MMS (Map)+>
+<!ATTLIST MMS mapcount %text;>
+<!ATTLIST MMS path %text;>
+
+<!ELEMENT Map (MapSettings?, Remark*, DataAuditSettings?, Input*, Output*, Unresolved*)>
+<!ATTLIST Map name %text;>
+<!ATTLIST Map InputCount %text;>
+<!ATTLIST Map OutputCount %text;>
+<!ATTLIST Map AuditCount %text;>
+<!ATTLIST Map RemarkCount %text;>
+<!ATTLIST Map Source %textopt;>
+<!ATTLIST Map Runtime (WTX | WDP) "WTX">
+
+<!ELEMENT Remark (#PCDATA)>
+<!ATTLIST Remark Topic %text;>
+
+<!ELEMENT DataAuditSettings (AuditObject)*>
+<!ELEMENT AuditObject (#PCDATA)>
+<!ATTLIST AuditObject track (Count | Occurrence | Warning | Error) "Occurrence">
+<!ATTLIST AuditObject details (NONE | Occurrence | Warning | Error) "NONE">
+<!ATTLIST AuditObject itemdata (NONE | Occurrence | Warning | Error) "NONE">
+
+<!ELEMENT Unresolved (UnresolvedName, UnresolvedRule)>
+<!ELEMENT UnresolvedName (#PCDATA)>
+<!ELEMENT UnresolvedRule (#PCDATA)>
+
+<!ELEMENT Input (Schema, NativeXSDCustomization?, NameSpaces?, SourceRule?)>
+
+<!ELEMENT Schema EMPTY>
+<!ATTLIST Schema cardnumber %text;>
+<!ATTLIST Schema cardname %text;>
+<!ATTLIST Schema typetree %text;>
+<!ATTLIST Schema type %text;>
+
+<!ELEMENT SourceRule (FetchAs, GET, Backup?, MetaDataLocation?)>
+
+<!ELEMENT FetchAs (Integral | Burst)>
+
+<!ELEMENT Integral EMPTY>
+<!ATTLIST Integral workarea (Create | Reuse) "Create">
+<!ATTLIST Integral fetchunit %text;>
+
+<!ELEMENT Burst EMPTY>
+<!ATTLIST Burst fetchunit %text;>
+
+<!ELEMENT GET (%Source;, Request?, DocumentVerification?)>
+
+<!ELEMENT Output (Schema, NativeXSDCustomization?, NoNameSpaceSchemaLocation?, NameSpaceSchemaLocation?, NameSpaces?, TargetRule?, SyntaxCard?, MapRule*)>
+
+<!ELEMENT TargetRule (PUT, Backup?, MetaDataLocation?)>
+
+<!ELEMENT PUT (%Target;, Data?)>
+
+<!ELEMENT MapRule ( objectset?, objectrule?, expansion?)>
+<!ATTLIST MapRule rulenumber %text;>
+
+<!ELEMENT Data (#PCDATA)>
+<!ELEMENT Request (#PCDATA)>
+<!ELEMENT objectset (#PCDATA)>
+<!ELEMENT objectrule (#PCDATA)>
+
+<!ELEMENT expansion (MapRule*)>
+<!ATTLIST expansion type (decomposition | partition) "decomposition">
+
+<!ELEMENT SyntaxCard (#PCDATA)>
+
+<!ELEMENT NoNameSpaceSchemaLocation (#PCDATA)>
+<!ELEMENT NameSpaceSchemaLocation (#PCDATA)>
+
+<!ELEMENT NameSpaces (NameSpace*)>
+<!ELEMENT NameSpace (URL ,Prefix)>
+<!ELEMENT URL (#PCDATA)>
+<!ELEMENT Prefix (#PCDATA)>
+
+<!ELEMENT NativeXSDCustomization (Identifier, MixedContent, GlobalElements?, XSITypes?)>
+<!ELEMENT Identifier (#PCDATA)>
+<!ELEMENT MixedContent (#PCDATA)>
+<!ELEMENT GlobalElements (GlobalElement*)>
+<!ELEMENT XSITypes (XSIType*)>
+<!ELEMENT GlobalElement (#PCDATA)>
+<!ELEMENT XSIType (#PCDATA)>

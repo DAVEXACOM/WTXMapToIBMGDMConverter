@@ -1,0 +1,19 @@
+<!-- Archive Adapters -->
+
+<!ELEMENT ArchiveZip_Source (Command?, Archive_Source.Transaction?,Retry?, DocumentVerification?)>
+<!ELEMENT ArchiveZip_Target (Command?, Archive_Target.Transaction?,Retry?, DocumentVerification?)>
+
+<!ELEMENT ArchiveTar_Source (Command?, Archive_Source.Transaction?, DocumentVerification?)>
+<!ELEMENT ArchiveTar_Target (Command?, Archive_Target.Transaction?, DocumentVerification?)>
+
+<!ELEMENT Archive_Source.Transaction EMPTY>
+<!ATTLIST Archive_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST Archive_Source.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST Archive_Source.Transaction Scope (Map) "Map">
+
+<!ELEMENT Archive_Target.Transaction EMPTY>
+<!ATTLIST Archive_Target.Transaction OnSuccess (Create) "Create">
+<!ATTLIST Archive_Target.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST Archive_Target.Transaction Scope (Map | Card) "Map">
+
+<!-- Archive Adapter -->

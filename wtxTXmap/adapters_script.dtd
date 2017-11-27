@@ -1,0 +1,31 @@
+<!-- Script adapters -->
+
+<!ELEMENT BAT_Source (Command?, BAT_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SHL_Source (Command?, SHL_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT BAT_Target (Command?, BAT_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SHL_Target (Command?, SHL_Target.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT BAT_Source.Transaction EMPTY>
+<!ATTLIST BAT_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST BAT_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BAT_Source.Transaction Scope (Map) "Map">
+<!ATTLIST BAT_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BAT_Target.Transaction EMPTY>
+<!ATTLIST BAT_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST BAT_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BAT_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST BAT_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SHL_Source.Transaction EMPTY>
+<!ATTLIST SHL_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST SHL_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SHL_Source.Transaction Scope (Map) "Map">
+<!ATTLIST SHL_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SHL_Target.Transaction EMPTY>
+<!ATTLIST SHL_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST SHL_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST SHL_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SHL_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+

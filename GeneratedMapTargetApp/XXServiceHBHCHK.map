@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" targetNamespace="default" version="8.0.5.0" mainMap="true">
+    <documentation description="generated via JAXB map generation API from WTX Map at Fri Nov 24 17:14:01 AEDT 2017"/>
+    <input path="/SGServiceAll.xsd"/>
+    <output path="/HB37.xsd"/>
+    <namespaces>
+        <namespace prefix="fn" uri="http://www.w3.org/2005/xpath-functions" kind="extension"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="XXServiceHBHCHK">
+        <input path="mb:msg(SGServiceRequest,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_SGServiceRequest"/>
+        <output path="mb:msg(HBHCHKREQ,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_HBHCHKREQ"/>
+        <move>
+            <documentation description="copy properties across"/>
+            <input path="$ComIbmMessageAssembly_SGServiceRequest/Properties"/>
+            <output path="$ComIbmMessageAssembly_HBHCHKREQ/Properties"/>
+        </move>
+        <assign value="0">
+            <documentation description="WTX Map value assignment. Rule number:1 Source Field/Operation:=0 Target Field:IMSLL_8 Field:HBHCHKReqOut"/>
+            <output path="$ComIbmMessageAssembly_HBHCHKREQ/HBHCHKREQ/IMSLL"/>
+        </assign>
+        <assign value="0">
+            <documentation description="WTX Map value assignment. Rule number:2 Source Field/Operation:=0 Target Field:IMSZZ_9 Field:HBHCHKReqOut"/>
+            <output path="$ComIbmMessageAssembly_HBHCHKREQ/HBHCHKREQ/IMSZZ"/>
+        </assign>
+        <assign value="&quot;TranName&quot;">
+            <documentation description="WTX Map value assignment. Rule number:3 Source Field/Operation:=&quot;TranName&quot; Target Field:TRCDNAME_11 Field:HBHDR_REQ Group:HBHCHKReqOut"/>
+            <output path="$ComIbmMessageAssembly_HBHCHKREQ/HBHCHKREQ/HBHDR_REQ/TRCDNAME"/>
+        </assign>
+        <move>
+            <documentation description="WTX Map association. rule number:4 Source Field/Operation:=SrhSource:SrhIdentity:SGServiceRequest Element:Global:SGSAllIn Target Field:TRMLIDNT_12 Field:HBHDR_REQ Group:HBHCHKReqOut"/>
+            <input path="$ComIbmMessageAssembly_SGServiceRequest/SGServiceRequest/SrhIdentity/SrhSource/"/>
+            <output path="$ComIbmMessageAssembly_HBHCHKREQ/HBHCHKREQ/HBHDR_REQ/TRMLIDNT"/>
+        </move>
+        <convert defaultValue="0">
+            <documentation description="WTX Map association. rule number:5 Source Field/Operation:=TEXTTONUMBER(LEFT(CustNum:CustDtlRq:BusinessData:SGServiceRequest Element:Global:SGSAllIn,5)) Target Field:PORTIDNF_13 Field:HBHDR_REQ Group:HBHCHKReqOut"/>
+            <input path="$ComIbmMessageAssembly_SGServiceRequest/SGServiceRequest/BusinessData/CustDtlRq/CustNum/" var="CustNum"/>
+            <output path="$ComIbmMessageAssembly_HBHCHKREQ/HBHCHKREQ/HBHDR_REQ/PORTIDNF"/>
+        </convert>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MMS SYSTEM "C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMConverterV1.0\wtxTXmap\mms.dtd">
+<MMS mapcount="1" path="C:\WMBWKS\TransformationOptions\TxTransformationProject\HBHCHKsgServiceTT.mms">
+ <Map name="HBHCHKRSPsgService" InputCount="1" OutputCount="1" AuditCount="0" RemarkCount="0" Source="" Runtime="WTX">
+  <MapSettings>
+   <MapAudit Switch="OFF">
+    <BurstAudit>
+     <Data.Never SizeValidation="WrongSize"/>
+     <Execution.Never/>
+    </BurstAudit>
+    <SummaryAudit execution="Always"/>
+    <SettingsAudit data="Never" map="Never"/>
+    <AuditLocation.File>
+     <Directory.Map/>
+     <FileName.Unique/>
+    </AuditLocation.File>
+   </MapAudit>
+   <MapTrace Switch="OFF">
+    <ContentTrace.File Switch="OFF">
+     <TraceLocation.File>
+      <Directory.Map/>
+      <FileName.Default/>
+     </TraceLocation.File>
+     <InputContentTrace.OFF/>
+     <RulesTrace.OFF/>
+     <SummaryContentTrace.OFF/>
+    </ContentTrace.File>
+   </MapTrace>
+   <WorkSpace.File PageSize="64" PageCount="8">
+    <Directory.Map/>
+    <WorkFilePrefix.Unique/>
+   </WorkSpace.File>
+   <Century.Current/>
+   <Validation.Standard/>
+   <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+   <Warnings.Every action="warn"/>
+   <CodePageFallback Fallback="SKIP"/>
+  </MapSettings>
+  <Input>
+    <Schema cardnumber="1"
+            cardname="HBHCHKRPY"
+            typetree="HB37.mtt"
+            type="HB_HCHKRPY Record CopyBook"/>
+    <NameSpaces/>
+    <SourceRule>
+      <FetchAs>
+       <Integral workarea="Create" fetchunit="S"/>
+      </FetchAs>
+      <GET>
+       <FILE_Source>
+        <FilePath>HBHCHKRsp.txt</FilePath>
+        <FILE_Source.Transaction OnSuccess="Keep" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Source>
+      </GET>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+    </SourceRule>
+  </Input>
+  <Output>
+    <Schema cardnumber="1"
+            cardname="SGServiceReply"
+            typetree="SGServiceAll.mtt"
+            type="Doc XSD"/>
+    <NameSpaces/>
+    <TargetRule>
+      <PUT>
+       <FILE_Target>
+        <FilePath>SGRepTT.xml</FilePath>
+        <FILE_Target.Transaction OnSuccess="Create" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Target>
+      </PUT>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+      <MetaDataLocation>SGServiceAll.xsd</MetaDataLocation>
+    </TargetRule>
+    <SyntaxCard>OFF</SyntaxCard>
+    <MapRule rulenumber="1">
+      <objectset>SyhVersion:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=TRCDNAME_18 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="2">
+      <objectset>SyhProcessCode:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=TRMLIDNT_19 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="3">
+      <objectset>ServiceId Attr:AttrList _XML_XML1_CustDtlRs Type:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=NUMBERTOTEXT(PORTIDNF_20 Field:HBHDR_RPY Group:HBHCHKRPY)</objectrule>
+    </MapRule>
+    <MapRule rulenumber="4">
+      <objectset>SrchStatus:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=STUS Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="5">
+      <objectset>SrchType:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=STUS Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="6">
+      <objectset>CISKey:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;999111&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="7">
+      <objectset>CustNum:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;888222&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="8">
+      <objectset>CustSNam1:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;Dave&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="9">
+      <objectset>CustSNam2:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;Arnold&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="10">
+      <objectset>AddrDetailLn1:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;42 Muston Road&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="11">
+      <objectset>AddrDetailLn2:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;Mona Vale&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="12">
+      <objectset>AddrDetailLn3:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;Qld&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="13">
+      <objectset>AcctReltInd:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;AcctRel&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="14">
+      <objectset>AuthLevel:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;Authlev&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="15">
+      <objectset>MrktBnk:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;MrktBnk&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="16">
+      <objectset>DateOfBirth:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;15/01/1970&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="17">
+      <objectset>ABN:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;121213131&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="18">
+      <objectset>CustType:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;custype&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="19">
+      <objectset>CorpCustInd:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;corpCI&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="20">
+      <objectset>OwnerType:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;occup&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="21">
+      <objectset>ProdCode:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;prdCd&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="22">
+      <objectset>SubSystCode:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;subsyst&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="23">
+      <objectset>SubProdCode:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;subpr&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="24">
+      <objectset>PdctXrefNum:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;xref&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="25">
+      <objectset>PdDesc:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=&quot;PdDesc&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="26">
+      <objectset>SyhInterfaceCode:SyhServiceRequestName:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=TRCDNAME_18 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="27">
+      <objectset>SyhServiceCode:SyhServiceRequestName:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=TRMLIDNT_19 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="28">
+      <objectset>SyhRequestVersion:SyhServiceRequestName:SGServiceReply Element:Global:SGServiceReply</objectset>
+      <objectrule>=NUMBERTOTEXT(PORTIDNF_20 Field:HBHDR_RPY Group:HBHCHKRPY)</objectrule>
+    </MapRule>
+    <MapRule rulenumber="29">
+      <objectset>version:Decl Prolog:SGServiceReply</objectset>
+      <objectrule>=&quot;1.0&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="30">
+      <objectset>standalone:Decl Prolog:SGServiceReply</objectset>
+      <objectrule>=&quot;Yes&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="31">
+      <objectset>encoding:Decl Prolog:SGServiceReply</objectset>
+      <objectrule>=&quot;UTF-8&quot;</objectrule>
+    </MapRule>
+  </Output>
+ </Map>
+</MMS>

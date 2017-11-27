@@ -1,0 +1,88 @@
+<!-- EAI adapters include ALE, BAPI, BDC, PeopleSoft, Seibel -->
+
+<!ELEMENT ALE_Source      (Command?, ALE_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT BAPI_Source     (Command?, BAPI_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT BDC_Source      (Command?, BDC_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT BWSB_Source      (Command?, BWSB_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT PSCI_Source (Command?, PSCI_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SIEBELCOM_Source     (Command?, SIEBELCOM_Source.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT ALE_Target      (Command?, ALE_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT BAPI_Target     (Command?, BAPI_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT BDC_Target      (Command?, BDC_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT BWSB_Target      (Command?, BWSB_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT PSCI_Target (Command?, PSCI_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT SIEBELCOM_Target     (Command?, SIEBELCOM_Target.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT ALE_Source.Transaction EMPTY>
+<!ATTLIST ALE_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST ALE_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST ALE_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST ALE_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BAPI_Source.Transaction EMPTY>
+<!ATTLIST BAPI_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST BAPI_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BAPI_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST BAPI_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BDC_Source.Transaction EMPTY>
+<!ATTLIST BDC_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST BDC_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BDC_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST BDC_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BWSB_Source.Transaction EMPTY>
+<!ATTLIST BWSB_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST BWSB_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BWSB_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST BWSB_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT PSCI_Source.Transaction EMPTY>
+<!ATTLIST PSCI_Source.Transaction OnSuccess (Keep | KeepOnContent | Delete) "Delete">
+<!ATTLIST PSCI_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST PSCI_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST PSCI_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SIEBELCOM_Source.Transaction EMPTY>
+<!ATTLIST SIEBELCOM_Source.Transaction OnSuccess (Keep | KeepOnContent | Delete) "Delete">
+<!ATTLIST SIEBELCOM_Source.Transaction OnFailure (Rollback) "Rollback">
+<!ATTLIST SIEBELCOM_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SIEBELCOM_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT ALE_Target.Transaction EMPTY>
+<!ATTLIST ALE_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST ALE_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST ALE_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST ALE_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BAPI_Target.Transaction EMPTY>
+<!ATTLIST BAPI_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST BAPI_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BAPI_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST BAPI_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BDC_Target.Transaction EMPTY>
+<!ATTLIST BDC_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST BDC_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BDC_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST BDC_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BWSB_Target.Transaction EMPTY>
+<!ATTLIST BWSB_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST BWSB_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BWSB_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST BWSB_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT PSCI_Target.Transaction EMPTY>
+<!ATTLIST PSCI_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST PSCI_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST PSCI_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST PSCI_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT SIEBELCOM_Target.Transaction EMPTY>
+<!ATTLIST SIEBELCOM_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST SIEBELCOM_Target.Transaction OnFailure (Rollback ) "Rollback">
+<!ATTLIST SIEBELCOM_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST SIEBELCOM_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+

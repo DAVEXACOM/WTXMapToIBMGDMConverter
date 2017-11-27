@@ -1,0 +1,47 @@
+<!-- FS adapters -->
+
+<!ELEMENT Alliance_Source  (Command?, FS_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT FHL_Source       (Command?, FS_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT IMX_Source       (Command?, FS_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT FSMGR_Source (Command?, FSMGR_Source.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT Alliance_Target  (Command?, FS_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT FHL_Target       (Command?, FHL_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT IMX_Target       (Command?, IMX_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT FSMGR_Target (Command?, FSMGR_Target.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT FSMGR_Source.Transaction EMPTY>
+<!ATTLIST FSMGR_Source.Transaction OnSuccess (Delete) "Delete">
+<!ATTLIST FSMGR_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FSMGR_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FSMGR_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT FSMGR_Target.Transaction EMPTY>
+<!ATTLIST FSMGR_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST FSMGR_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FSMGR_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FSMGR_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT FS_Source.Transaction EMPTY>
+<!ATTLIST FS_Source.Transaction OnSuccess (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST FS_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FS_Source.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FS_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT FS_Target.Transaction EMPTY>
+<!ATTLIST FS_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST FS_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FS_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FS_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT FHL_Target.Transaction EMPTY>
+<!ATTLIST FHL_Target.Transaction OnSuccess (Create | CreateOnContent | NotCreate | Append) "Create">
+<!ATTLIST FHL_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST FHL_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST FHL_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT IMX_Target.Transaction EMPTY>
+<!ATTLIST IMX_Target.Transaction OnSuccess (Create | CreateOnContent | NotCreate | Append) "Create">
+<!ATTLIST IMX_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST IMX_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST IMX_Target.Transaction Warnings (Ignore | Fail) "Ignore">

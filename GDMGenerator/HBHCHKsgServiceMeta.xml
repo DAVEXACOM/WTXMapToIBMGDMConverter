@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MMS SYSTEM "C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMConverterV1.0\wtxTXmap\mms.dtd">
+<MMS mapcount="1" path="C:\WMBWKS\TransformationOptions\TxTransformationProject\HBHCHKsgService.mms">
+ <Map name="HBHCHKRSPsgService" InputCount="1" OutputCount="1" AuditCount="0" RemarkCount="0" Source="" Runtime="WTX">
+  <MapSettings>
+   <MapAudit Switch="OFF">
+    <BurstAudit>
+     <Data.Never SizeValidation="WrongSize"/>
+     <Execution.Never/>
+    </BurstAudit>
+    <SummaryAudit execution="Always"/>
+    <SettingsAudit data="Never" map="Never"/>
+    <AuditLocation.File>
+     <Directory.Map/>
+     <FileName.Unique/>
+    </AuditLocation.File>
+   </MapAudit>
+   <MapTrace Switch="OFF">
+    <ContentTrace.File Switch="OFF">
+     <TraceLocation.File>
+      <Directory.Map/>
+      <FileName.Default/>
+     </TraceLocation.File>
+     <InputContentTrace.OFF/>
+     <RulesTrace.OFF/>
+     <SummaryContentTrace.OFF/>
+    </ContentTrace.File>
+   </MapTrace>
+   <WorkSpace.File PageSize="64" PageCount="8">
+    <Directory.Map/>
+    <WorkFilePrefix.Unique/>
+   </WorkSpace.File>
+   <Century.Current/>
+   <Validation.Standard/>
+   <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+   <Warnings.Every action="warn"/>
+   <CodePageFallback Fallback="SKIP"/>
+  </MapSettings>
+  <Input>
+    <Schema cardnumber="1"
+            cardname="HBHCHKRPY"
+            typetree="HB37.mtt"
+            type="HB_HCHKRPY Record CopyBook"/>
+    <NameSpaces/>
+    <SourceRule>
+      <FetchAs>
+       <Integral workarea="Create" fetchunit="S"/>
+      </FetchAs>
+      <GET>
+       <FILE_Source>
+        <FilePath>HBHCHKRsp.txt</FilePath>
+        <FILE_Source.Transaction OnSuccess="Keep" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Source>
+      </GET>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+    </SourceRule>
+  </Input>
+  <Output>
+    <Schema cardnumber="1"
+            cardname="SGServiceRPY"
+            typetree="SGServiceAll.xsd"
+            type="SGServiceReply global XSD"/>
+    <NameSpaces/>
+    <TargetRule>
+      <PUT>
+       <FILE_Target>
+        <FilePath>SGRep.xml</FilePath>
+        <FILE_Target.Transaction OnSuccess="Create" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Target>
+      </PUT>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+      <MetaDataLocation>SGServiceAll.xsd</MetaDataLocation>
+    </TargetRule>
+    <SyntaxCard>OFF</SyntaxCard>
+    <MapRule rulenumber="1">
+      <objectset>SyhVersion:sequence:SGServiceRPY</objectset>
+      <objectrule>=TRCDNAME_18 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="2">
+      <objectset>SyhProcessCode:sequence:SGServiceRPY</objectset>
+      <objectrule>=TRMLIDNT_19 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="3">
+      <objectset>ServiceId:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=NUMBERTOTEXT(PORTIDNF_20 Field:HBHDR_RPY Group:HBHCHKRPY)</objectrule>
+    </MapRule>
+    <MapRule rulenumber="4">
+      <objectset>SrchStatus:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=STUS Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="5">
+      <objectset>SyhInterfaceCode:sequence:SyhServiceRequestName:sequence:SGServiceRPY</objectset>
+      <objectrule>=TRCDNAME_18 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="6">
+      <objectset>SyhServiceCode:sequence:SyhServiceRequestName:sequence:SGServiceRPY</objectset>
+      <objectrule>=TRMLIDNT_19 Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="7">
+      <objectset>SyhRequestVersion:sequence:SyhServiceRequestName:sequence:SGServiceRPY</objectset>
+      <objectrule>=NUMBERTOTEXT(PORTIDNF_20 Field:HBHDR_RPY Group:HBHCHKRPY)</objectrule>
+    </MapRule>
+    <MapRule rulenumber="8">
+      <objectset>SrchType:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=STUS Field:HBHDR_RPY Group:HBHCHKRPY</objectrule>
+    </MapRule>
+    <MapRule rulenumber="9">
+      <objectset>AddrDetailLn3:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;Victoria&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="10">
+      <objectset>CISKey:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;999111&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="11">
+      <objectset>CustNum:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;888222&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="12">
+      <objectset>CustSNam1:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;Dave&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="13">
+      <objectset>CustSNam2:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;Arnold&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="14">
+      <objectset>AddrDetailLn1:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;42 Muston Road&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="15">
+      <objectset>AddrDetailLn2:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;Mona Vale&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="16">
+      <objectset>AcctReltInd:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;0&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="17">
+      <objectset>AuthLevel:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;1&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="18">
+      <objectset>MrktBnk:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;MrktBnk&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="19">
+      <objectset>DateOfBirth:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;15/01/1970&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="20">
+      <objectset>ABN:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;77733312&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="21">
+      <objectset>CustType:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;public&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="22">
+      <objectset>CorpCustInd:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;banking&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="23">
+      <objectset>OwnerType:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;ocupier&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="24">
+      <objectset>ProdCode:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;ProdCode&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="25">
+      <objectset>SubSystCode:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;SubSystCode&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="26">
+      <objectset>SubProdCode:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;SubProdCode&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="27">
+      <objectset>PdctXrefNum:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;pdctxRefNum&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="28">
+      <objectset>PdDesc:sequence:Customer:sequence:ListOfCustomers:sequence:CustData:sequence:CustDtlRs:choice:BusinessData:sequence:SGServiceRPY</objectset>
+      <objectrule>=&quot;my product&quot;</objectrule>
+    </MapRule>
+  </Output>
+ </Map>
+</MMS>

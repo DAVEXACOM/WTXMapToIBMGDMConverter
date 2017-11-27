@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="FileName.Unique">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="MapSettings">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="MapAudit"/>
+        <xsd:element ref="MapTrace"/>
+        <xsd:element ref="WorkSpace.File"/>
+        <xsd:element ref="Century.Current"/>
+        <xsd:element ref="Validation.Standard"/>
+        <xsd:element ref="Retry"/>
+        <xsd:element ref="Warnings.Every"/>
+        <xsd:element ref="CodePageFallback"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Output">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Schema"/>
+        <xsd:element ref="NameSpaces"/>
+        <xsd:element ref="TargetRule"/>
+        <xsd:element ref="SyntaxCard"/>
+        <xsd:element maxOccurs="unbounded" ref="MapRule"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FILE_Target.Transaction">
+    <xsd:complexType>
+      <xsd:attribute name="OnSuccess" type="xsd:string"/>
+      <xsd:attribute name="OnFailure" type="xsd:string"/>
+      <xsd:attribute name="Scope" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SummaryAudit">
+    <xsd:complexType>
+      <xsd:attribute name="execution" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AuditLocation.File">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Directory.Map"/>
+        <xsd:element ref="FileName.Default"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="TraceLocation.File">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Directory.Map"/>
+        <xsd:element ref="FileName.Default"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FetchAs">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Integral"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="NameSpaces">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="Backup">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="BackupLocation.File"/>
+      </xsd:sequence>
+      <xsd:attribute name="Switch" type="xsd:string"/>
+      <xsd:attribute name="When" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Century.Current">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="MapRule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="objectset"/>
+        <xsd:element ref="objectrule"/>
+      </xsd:sequence>
+      <xsd:attribute name="rulenumber" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="BackupLocation.File">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Directory.Map"/>
+        <xsd:element ref="FileName.Unique"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Retry">
+    <xsd:complexType>
+      <xsd:attribute name="Switch" type="xsd:string"/>
+      <xsd:attribute name="Interval" type="xsd:string"/>
+      <xsd:attribute name="MaxAttempts" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="WorkSpace.File">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Directory.Map"/>
+        <xsd:element ref="WorkFilePrefix.MapName"/>
+      </xsd:sequence>
+      <xsd:attribute name="PageCount" type="xsd:string"/>
+      <xsd:attribute name="PageSize" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Warnings.Every">
+    <xsd:complexType>
+      <xsd:attribute name="action" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MapTrace">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ContentTrace.File"/>
+      </xsd:sequence>
+      <xsd:attribute name="Switch" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="InputContentTrace.OFF">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="Map">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="MapSettings"/>
+        <xsd:element minOccurs="0" ref="Input"/>
+        <xsd:element ref="Output"/>
+      </xsd:sequence>
+      <xsd:attribute name="Source" type="xsd:string"/>
+      <xsd:attribute name="name" type="xsd:string"/>
+      <xsd:attribute name="Runtime" type="xsd:string"/>
+      <xsd:attribute name="RemarkCount" type="xsd:string"/>
+      <xsd:attribute name="InputCount" type="xsd:string"/>
+      <xsd:attribute name="OutputCount" type="xsd:string"/>
+      <xsd:attribute name="AuditCount" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ContentTrace.File">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TraceLocation.File"/>
+        <xsd:element ref="InputContentTrace.OFF"/>
+        <xsd:element ref="RulesTrace.OFF"/>
+        <xsd:element ref="SummaryContentTrace.OFF"/>
+      </xsd:sequence>
+      <xsd:attribute name="Switch" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FilePath" type="xsd:string"/>
+  <xsd:element name="TargetRule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="PUT"/>
+        <xsd:element ref="Backup"/>
+        <xsd:element minOccurs="0" ref="MetaDataLocation"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FileName.Default">
+    <xsd:complexType>
+      <xsd:attribute name="action" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GET">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FILE_Source"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="BurstAudit">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Data.Never"/>
+        <xsd:element ref="Execution.Never"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FILE_Source">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FilePath"/>
+        <xsd:element ref="FILE_Source.Transaction"/>
+        <xsd:element ref="Retry"/>
+        <xsd:element ref="DocumentVerification"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CodePageFallback">
+    <xsd:complexType>
+      <xsd:attribute name="Fallback" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SourceRule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FetchAs"/>
+        <xsd:element ref="GET"/>
+        <xsd:element ref="Backup"/>
+        <xsd:element ref="MetaDataLocation"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MapAudit">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="BurstAudit"/>
+        <xsd:element ref="SummaryAudit"/>
+        <xsd:element ref="SettingsAudit"/>
+        <xsd:element ref="AuditLocation.File"/>
+      </xsd:sequence>
+      <xsd:attribute name="Switch" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FILE_Target">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FilePath"/>
+        <xsd:element ref="FILE_Target.Transaction"/>
+        <xsd:element ref="Retry"/>
+        <xsd:element ref="DocumentVerification"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DocumentVerification" type="xsd:string"/>
+  <xsd:element name="Execution.Never">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="SettingsAudit">
+    <xsd:complexType>
+      <xsd:attribute name="map" type="xsd:string"/>
+      <xsd:attribute name="data" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="objectset" type="xsd:string"/>
+  <xsd:element name="Directory.Map">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="SummaryContentTrace.OFF">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="objectrule" type="xsd:string"/>
+  <xsd:element name="FILE_Source.Transaction">
+    <xsd:complexType>
+      <xsd:attribute name="OnSuccess" type="xsd:string"/>
+      <xsd:attribute name="OnFailure" type="xsd:string"/>
+      <xsd:attribute name="Scope" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Data.Never">
+    <xsd:complexType>
+      <xsd:attribute name="SizeValidation" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Validation.Standard">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="MetaDataLocation" type="xsd:string"/>
+  <xsd:element name="WorkFilePrefix.MapName">
+    <xsd:complexType>
+      <xsd:attribute name="action" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="RulesTrace.OFF">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element name="SyntaxCard" type="xsd:string"/>
+  <xsd:element name="MMS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Map"/>
+      </xsd:sequence>
+      <xsd:attribute name="path" type="xsd:string"/>
+      <xsd:attribute name="mapcount" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Input">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Schema"/>
+        <xsd:element ref="NameSpaces"/>
+        <xsd:element ref="SourceRule"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Integral">
+    <xsd:complexType>
+      <xsd:attribute name="workarea" type="xsd:string"/>
+      <xsd:attribute name="fetchunit" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Schema">
+    <xsd:complexType>
+      <xsd:attribute name="cardname" type="xsd:string"/>
+      <xsd:attribute name="cardnumber" type="xsd:string"/>
+      <xsd:attribute name="typetree" type="xsd:string"/>
+      <xsd:attribute name="type" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PUT">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FILE_Target"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

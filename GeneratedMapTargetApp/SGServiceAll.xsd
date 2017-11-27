@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CustDtlRq" type="_XML_XML1_CustDtlRq">
+  </xsd:element>
+  <xsd:element name="ABN" type="_XML_XML1_ABN">
+  </xsd:element>
+  <xsd:element name="ListOfCustomers" type="_XML_XML1_ListOfCustomers">
+  </xsd:element>
+  <xsd:element name="AddrDetailLn1" type="xsd:string"/>
+  <xsd:element name="CustDtlRs" type="_XML_XML1_CustDtlRs">
+  </xsd:element>
+  <xsd:element name="AddrDetailLn2" type="xsd:string"/>
+  <xsd:element name="AddrDetailLn3" type="xsd:string"/>
+  <xsd:element name="SrhServiceRequestName" type="_XML_XML1_SrhServiceRequestName">
+  </xsd:element>
+  <xsd:element name="SyhServiceRequestName" type="_XML_XML1_SyhServiceRequestName">
+  </xsd:element>
+  <xsd:element name="SrhIdentity" type="_XML_XML1_SrhIdentity">
+  </xsd:element>
+  <xsd:element name="SyhServiceCode" type="xsd:string"/>
+  <xsd:element name="SubProdCode" type="_XML_XML1_SubProdCode">
+  </xsd:element>
+  <xsd:element name="SyhVersion" type="xsd:string"/>
+  <xsd:element name="AcctReltInd" type="_XML_XML1_AcctReltInd">
+  </xsd:element>
+  <xsd:element name="AuthLevel" type="_XML_XML1_AuthLevel">
+  </xsd:element>
+  <xsd:element name="DateOfBirth" type="xsd:string"/>
+  <xsd:element name="BusinessData" type="_XML_XML1_BusinessData">
+  </xsd:element>
+  <xsd:element name="CustSNam1" type="xsd:string"/>
+  <xsd:element name="CustData" type="_XML_XML1_CustData">
+  </xsd:element>
+  <xsd:element name="CustType" type="xsd:string"/>
+  <xsd:element name="SGServiceReply" type="_XML_XML1_SGServiceReply">
+  </xsd:element>
+  <xsd:element name="SGServiceRequest" type="_XML_XML1_SGServiceRequest">
+  </xsd:element>
+  <xsd:element name="CustSNam2" type="_XML_XML1_CustSNam2">
+  </xsd:element>
+  <xsd:element name="ProdCode" type="_XML_XML1_ProdCode">
+  </xsd:element>
+  <xsd:element name="Customer" type="_XML_XML1_Customer">
+  </xsd:element>
+  <xsd:element name="CISKey" type="xsd:string"/>
+  <xsd:element name="MrktBnk" type="xsd:string"/>
+  <xsd:element name="OwnerType" type="_XML_XML1_OwnerType">
+  </xsd:element>
+  <xsd:element name="SyhProcessCode" type="xsd:string"/>
+  <xsd:element name="SrchType" type="_XML_XML1_SrchType">
+  </xsd:element>
+  <xsd:element name="SrchStatus" type="xsd:string"/>
+  <xsd:element name="CorpCustInd" type="xsd:string"/>
+  <xsd:element name="SyhInterfaceCode" type="xsd:string"/>
+  <xsd:element name="CustNum" type="xsd:string"/>
+  <xsd:element name="SubSystCode" type="_XML_XML1_SubSystCode">
+  </xsd:element>
+  <xsd:element name="PdDesc" type="_XML_XML1_PdDesc">
+  </xsd:element>
+  <xsd:element name="SyhRequestVersion" type="xsd:string"/>
+  <xsd:element name="PdctXrefNum" type="_XML_XML1_PdctXrefNum">
+  </xsd:element>
+  <xsd:element name="SrhUserContext" type="xsd:string"/>
+  <xsd:element name="SrhOrigSystem" type="xsd:string"/>
+  <xsd:element name="SrhFunctional" type="xsd:string"/>
+  <xsd:element name="SrhExtension" type="xsd:string"/>
+  <xsd:element name="SrhSource" type="xsd:string"/>
+  <xsd:element name="SrhInterfaceCode" type="xsd:string"/>
+  <xsd:element name="SrhServiceCode" type="xsd:string"/>
+  <xsd:element name="SrhRequestVersion" type="xsd:string"/>
+    <xsd:complexType name="_XML_XML1_CustDtlRq">
+      <xsd:sequence>
+        <xsd:element ref="CustNum"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_ABN"/>
+    <xsd:complexType name="_XML_XML1_ListOfCustomers">
+      <xsd:sequence>
+        <xsd:element ref="Customer"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_CustDtlRs">
+      <xsd:sequence>
+        <xsd:element ref="SrchStatus"/>
+        <xsd:element ref="CustData"/>
+      </xsd:sequence>
+      <xsd:attribute name="ServiceId" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_SrhServiceRequestName">
+      <xsd:sequence>
+        <xsd:element ref="SrhInterfaceCode"/>
+        <xsd:element ref="SrhServiceCode"/>
+        <xsd:element ref="SrhRequestVersion"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_SyhServiceRequestName">
+      <xsd:sequence>
+        <xsd:element ref="SyhInterfaceCode"/>
+        <xsd:element ref="SyhServiceCode"/>
+        <xsd:element ref="SyhRequestVersion"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_SrhIdentity">
+      <xsd:sequence>
+        <xsd:element ref="SrhSource"/>
+        <xsd:element ref="SrhOrigSystem"/>
+        <xsd:element ref="SrhUserContext"/>
+        <xsd:element ref="SrhFunctional"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_SubProdCode"/>
+    <xsd:complexType name="_XML_XML1_AcctReltInd"/>
+    <xsd:complexType name="_XML_XML1_AuthLevel"/>
+    <xsd:complexType name="_XML_XML1_BusinessData">
+            <xsd:choice maxOccurs="1" minOccurs="1">
+        <xsd:element ref="CustDtlRs"/>
+        <xsd:element ref="CustDtlRq"/>
+      </xsd:choice>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_CustData">
+      <xsd:sequence>
+        <xsd:element ref="SrchType"/>
+        <xsd:element ref="ListOfCustomers"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_SGServiceReply">
+      <xsd:sequence>
+        <xsd:element ref="SyhVersion"/>
+        <xsd:element ref="SyhServiceRequestName"/>
+        <xsd:element ref="SyhProcessCode"/>
+        <xsd:element ref="BusinessData"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_SGServiceRequest">
+      <xsd:sequence>
+        <xsd:element ref="SrhServiceRequestName"/>
+        <xsd:element ref="SrhIdentity"/>
+                <xsd:element ref="SrhExtension"/>
+                <xsd:element ref="BusinessData"/>
+            </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_CustSNam2"/>
+    <xsd:complexType name="_XML_XML1_ProdCode"/>
+    <xsd:complexType name="_XML_XML1_Customer">
+      <xsd:sequence>
+        <xsd:element ref="CISKey"/>
+        <xsd:element ref="CustNum"/>
+        <xsd:element ref="CustSNam1"/>
+        <xsd:element ref="CustSNam2"/>
+        <xsd:element ref="AddrDetailLn1"/>
+        <xsd:element ref="AddrDetailLn2"/>
+        <xsd:element ref="AddrDetailLn3"/>
+        <xsd:element ref="AcctReltInd"/>
+        <xsd:element ref="AuthLevel"/>
+        <xsd:element ref="MrktBnk"/>
+        <xsd:element ref="DateOfBirth"/>
+        <xsd:element ref="ABN"/>
+        <xsd:element ref="CustType"/>
+        <xsd:element ref="CorpCustInd"/>
+        <xsd:element ref="OwnerType"/>
+        <xsd:element ref="ProdCode"/>
+        <xsd:element ref="SubSystCode"/>
+        <xsd:element ref="SubProdCode"/>
+        <xsd:element ref="PdctXrefNum"/>
+        <xsd:element ref="PdDesc"/>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="_XML_XML1_OwnerType"/>
+    <xsd:complexType name="_XML_XML1_SrchType"/>
+    <xsd:complexType name="_XML_XML1_SubSystCode"/>
+    <xsd:complexType name="_XML_XML1_PdDesc"/>
+    <xsd:complexType name="_XML_XML1_PdctXrefNum"/>
+</xsd:schema>

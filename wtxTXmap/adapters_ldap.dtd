@@ -1,0 +1,16 @@
+<!-- LDAP adapter -->
+
+<!ELEMENT LDAP_Source (Command?, LDAP_Source.Transaction? , Retry?, DocumentVerification?)>
+<!ELEMENT LDAP_Target (Command?, LDAP_Target.Transaction? , Retry?, DocumentVerification?)>
+
+<!ELEMENT LDAP_Source.Transaction EMPTY>
+<!ATTLIST LDAP_Source.Transaction OnSuccess (Keep) "Keep">
+<!ATTLIST LDAP_Source.Transaction OnFailure (Rollback | Commit) "Commit">
+<!ATTLIST LDAP_Source.Transaction Scope (Map | Card) "Map">
+<!ATTLIST LDAP_Source.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT LDAP_Target.Transaction EMPTY>
+<!ATTLIST LDAP_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST LDAP_Target.Transaction OnFailure (Rollback | Commit) "Commit">
+<!ATTLIST LDAP_Target.Transaction Scope (Map | Card) "Map">
+<!ATTLIST LDAP_Target.Transaction Warnings (Ignore | Fail) "Ignore">

@@ -1,0 +1,171 @@
+<!-- MOM includes MessageQClient, MessageQServer, MQSeriesClient, MQSeriesServer, 
+                  MSMQ, OracleAQ, ROMA,
+                  TIBRV, TUX, and TUXMT  adapters -->
+
+<!ELEMENT BMQC_Source (Command?, BMQC_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MQSC_Source (Command?, MQSC_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MessageQServer_Source (Command?, MOM_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MQS_Source (Command?, MQS_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MQSClient_Source      (Command?, MOM_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MQSServer_Source      (Command?, MOM_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MSMQ_Source           (Command?, MSMQ_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT OracleAQ_Source       (Command?, OracleAQ_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT ROMA_Source           (Command?, ROMA_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT RV_Source             (Command?, RV_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT RVTX_Source           (Command?, RVTX_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT TIBRV_Source          (Command?, TIBRV_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT TUX_Source            (Command?, TUX_Source.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT TUXMT_Source          (Command?, TUXMT_Source.Transaction, Retry?, DocumentVerification?)>
+
+<!ELEMENT BMQC_Target           (Command?, BMQC_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MQSC_Target           (Command?, MQSC_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MessageQServer_Target (Command?, MOM_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MQS_Target            (Command?, MQS_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT MQSClient_Target      (Command?, MOM_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MQSServer_Target      (Command?, MOM_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MSMQ_Target           (Command?, MSMQ_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT OracleAQ_Target       (Command?, MOM_Target.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT ROMA_Target           (Command?, ROMA_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT RV_Target             (Command?, RV_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT RVTX_Target           (Command?, RVTX_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT TIBRV_Target          (Command?, TIBRV_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT TUX_Target            (Command?, TUX_Target.Transaction, Retry?, DocumentVerification?)>
+<!ELEMENT TUXMT_Target          (Command?, TUXMT_Target.Transaction, Retry?, DocumentVerification?)>
+
+<!ELEMENT MOM_Source.Transaction EMPTY>
+<!ATTLIST MOM_Source.Transaction OnSuccess     (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST MOM_Source.Transaction OnFailure     (Rollback | Commit) "Rollback">
+<!ATTLIST MOM_Source.Transaction Scope         (Map | Burst | Card) "Map">
+<!ATTLIST MOM_Source.Transaction Warnings      (Ignore | Fail) "Ignore">
+
+<!ELEMENT BMQC_Source.Transaction EMPTY>
+<!ATTLIST BMQC_Source.Transaction OnSuccess     (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST BMQC_Source.Transaction OnFailure     (Rollback | Commit) "Rollback">
+<!ATTLIST BMQC_Source.Transaction Scope         (Map | Burst | Card) "Map">
+<!ATTLIST BMQC_Source.Transaction Warnings      (Ignore | Fail) "Ignore">
+
+<!ELEMENT MQSC_Source.Transaction EMPTY>
+<!ATTLIST MQSC_Source.Transaction OnSuccess     (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST MQSC_Source.Transaction OnFailure     (Rollback | Commit) "Rollback">
+<!ATTLIST MQSC_Source.Transaction Scope         (Map | Burst | Card) "Map">
+<!ATTLIST MQSC_Source.Transaction Warnings      (Ignore | Fail) "Ignore">
+
+<!ELEMENT MQS_Source.Transaction EMPTY>
+<!ATTLIST MQS_Source.Transaction OnSuccess     (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST MQS_Source.Transaction OnFailure     (Rollback | Commit) "Rollback">
+<!ATTLIST MQS_Source.Transaction Scope         (Map | Burst | Card) "Map">
+<!ATTLIST MQS_Source.Transaction Warnings      (Ignore | Fail) "Ignore">
+
+<!ELEMENT MSMQ_Source.Transaction EMPTY>
+<!ATTLIST MSMQ_Source.Transaction OnSuccess     (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST MSMQ_Source.Transaction OnFailure     (Rollback | Commit) "Rollback">
+<!ATTLIST MSMQ_Source.Transaction Scope         (Map | Burst | Card) "Map">
+<!ATTLIST MSMQ_Source.Transaction Warnings      (Ignore | Fail) "Ignore">
+
+<!ELEMENT MSMQ_Target.Transaction EMPTY>
+<!ATTLIST MSMQ_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST MSMQ_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MSMQ_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MSMQ_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT OracleAQ_Source.Transaction EMPTY>
+<!ATTLIST OracleAQ_Source.Transaction OnSuccess (Keep | Delete) "Keep">
+<!ATTLIST OracleAQ_Source.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST OracleAQ_Source.Transaction Scope     (Map | Burst | Card) "Map">
+<!ATTLIST OracleAQ_Source.Transaction Warnings  (Ignore | Fail) "Ignore">
+
+<!ELEMENT ROMA_Source.Transaction EMPTY>
+<!ATTLIST ROMA_Source.Transaction OnSuccess     (Keep | KeepOnContent | Delete) "Keep">
+<!ATTLIST ROMA_Source.Transaction OnFailure     (Rollback | Commit) "Rollback">
+<!ATTLIST ROMA_Source.Transaction Scope         (Map | Burst | Card) "Map">
+<!ATTLIST ROMA_Source.Transaction Warnings      (Ignore | Fail) "Ignore">
+
+<!ELEMENT ROMA_Target.Transaction EMPTY>
+<!ATTLIST ROMA_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST ROMA_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST ROMA_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST ROMA_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT RV_Source.Transaction EMPTY>
+<!ATTLIST RV_Source.Transaction OnSuccess    (Create | Delete) "Delete">
+<!ATTLIST RV_Source.Transaction OnFailure    (Commit | Rollback) "Commit">
+<!ATTLIST RV_Source.Transaction Scope        (Map | Burst | Card) "Map">
+<!ATTLIST RV_Source.Transaction Warnings     (Ignore | Fail) "Ignore">
+
+<!ELEMENT RVTX_Source.Transaction EMPTY>
+<!ATTLIST RVTX_Source.Transaction OnSuccess    (Delete | Keep) "Delete">
+<!ATTLIST RVTX_Source.Transaction OnFailure    (Commit | Rollback) "Commit">
+<!ATTLIST RVTX_Source.Transaction Scope        (Map | Burst | Card) "Map">
+<!ATTLIST RVTX_Source.Transaction Warnings     (Ignore | Fail) "Ignore">
+
+<!ELEMENT TIBRV_Source.Transaction EMPTY>
+<!ATTLIST TIBRV_Source.Transaction OnSuccess    (Delete) "Delete">
+<!ATTLIST TIBRV_Source.Transaction OnFailure    (Commit) "Commit">
+<!ATTLIST TIBRV_Source.Transaction Scope        (Map | Burst | Card) "Map">
+<!ATTLIST TIBRV_Source.Transaction Warnings     (Ignore | Fail) "Ignore">
+
+<!ELEMENT TUX_Source.Transaction EMPTY>
+<!ATTLIST TUX_Source.Transaction OnSuccess    (Delete) "Delete">
+<!ATTLIST TUX_Source.Transaction OnFailure    (Commit | Rollback) "Commit">
+<!ATTLIST TUX_Source.Transaction Scope        (Map | Burst | Card) "Map">
+<!ATTLIST TUX_Source.Transaction Warnings     (Ignore | Fail) "Ignore">
+
+<!ELEMENT TUXMT_Source.Transaction EMPTY>
+<!ATTLIST TUXMT_Source.Transaction OnSuccess    (Delete) "Delete">
+<!ATTLIST TUXMT_Source.Transaction OnFailure    (Commit | Rollback) "Commit">
+<!ATTLIST TUXMT_Source.Transaction Scope        (Map | Burst | Card) "Map">
+<!ATTLIST TUXMT_Source.Transaction Warnings     (Ignore | Fail) "Ignore">
+<!ELEMENT MOM_Target.Transaction EMPTY>
+<!ATTLIST MOM_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST MOM_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MOM_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MOM_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT BMQC_Target.Transaction EMPTY>
+<!ATTLIST BMQC_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST BMQC_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST BMQC_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST BMQC_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT MQSC_Target.Transaction EMPTY>
+<!ATTLIST MQSC_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST MQSC_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MQSC_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MQSC_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT MQS_Target.Transaction EMPTY>
+<!ATTLIST MQS_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST MQS_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST MQS_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST MQS_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT RV_Target.Transaction EMPTY>
+<!ATTLIST RV_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST RV_Target.Transaction OnFailure (Commit |Rollback) "Commit">
+<!ATTLIST RV_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST RV_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT RVTX_Target.Transaction EMPTY>
+<!ATTLIST RVTX_Target.Transaction OnSuccess (Create | CreateOnContent | Keep) "Create">
+<!ATTLIST RVTX_Target.Transaction OnFailure (Commit | Rollback) "Commit">
+<!ATTLIST RVTX_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST RVTX_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT TIBRV_Target.Transaction EMPTY>
+<!ATTLIST TIBRV_Target.Transaction OnSuccess (Create) "Create">
+<!ATTLIST TIBRV_Target.Transaction OnFailure (Commit) "Commit">
+<!ATTLIST TIBRV_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST TIBRV_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT TUX_Target.Transaction EMPTY>
+<!ATTLIST TUX_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST TUX_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST TUX_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST TUX_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+
+<!ELEMENT TUXMT_Target.Transaction EMPTY>
+<!ATTLIST TUXMT_Target.Transaction OnSuccess (Create | CreateOnContent) "Create">
+<!ATTLIST TUXMT_Target.Transaction OnFailure (Rollback | Commit) "Rollback">
+<!ATTLIST TUXMT_Target.Transaction Scope (Map | Burst | Card) "Map">
+<!ATTLIST TUXMT_Target.Transaction Warnings (Ignore | Fail) "Ignore">
+

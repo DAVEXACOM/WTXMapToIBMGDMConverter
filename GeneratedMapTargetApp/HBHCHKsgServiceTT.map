@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" targetNamespace="default" version="8.0.5.0" mainMap="true">
+    <documentation description="generated via JAXB map generation API from WTX Map at Fri Nov 24 17:17:26 AEDT 2017"/>
+    <input path="/HB37.xsd"/>
+    <output path="/SGServiceAll.xsd"/>
+    <namespaces>
+        <namespace prefix="fn" uri="http://www.w3.org/2005/xpath-functions" kind="extension"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="HBHCHKsgServiceTT">
+        <input path="mb:msg(HBHCHKRPY,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_HBHCHKRPY"/>
+        <output path="mb:msg(SGServiceReply,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_SGServiceReply"/>
+        <move>
+            <documentation description="copy properties across"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/Properties"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/Properties"/>
+        </move>
+        <move>
+            <documentation description="WTX Map association. rule number:1 Source Field/Operation:=TRCDNAME_18 Field:HBHDR_RPY Group:HBHCHKRPY Target Field:SyhVersion:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/TRCDNAME"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhVersion/"/>
+        </move>
+        <move>
+            <documentation description="WTX Map association. rule number:2 Source Field/Operation:=TRMLIDNT_19 Field:HBHDR_RPY Group:HBHCHKRPY Target Field:SyhProcessCode:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/TRMLIDNT"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhProcessCode/"/>
+        </move>
+        <convert defaultValue="0">
+            <documentation description="WTX Map association. rule number:3 Source Field/Operation:=NUMBERTOTEXT(PORTIDNF_20 Field:HBHDR_RPY Group:HBHCHKRPY) Target Field:ServiceId Attr:AttrList _XML_XML1_CustDtlRs Type:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/PORTIDNF" var="PORTIDNF_20"/>
+            <output path="$ComIbmMessageAssembly_ServiceId/ServiceId/"/>
+        </convert>
+        <move>
+            <documentation description="WTX Map association. rule number:4 Source Field/Operation:=STUS Field:HBHDR_RPY Group:HBHCHKRPY Target Field:SrchStatus:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/STUS"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/SrchStatus/"/>
+        </move>
+        <move>
+            <documentation description="WTX Map association. rule number:5 Source Field/Operation:=STUS Field:HBHDR_RPY Group:HBHCHKRPY Target Field:SrchType:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/STUS"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/SrchType/"/>
+        </move>
+        <assign value="&quot;999111&quot;">
+            <documentation description="WTX Map value assignment. Rule number:6 Source Field/Operation:=&quot;999111&quot; Target Field:CISKey:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CISKey/"/>
+        </assign>
+        <assign value="&quot;888222&quot;">
+            <documentation description="WTX Map value assignment. Rule number:7 Source Field/Operation:=&quot;888222&quot; Target Field:CustNum:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CustNum/"/>
+        </assign>
+        <assign value="&quot;Dave&quot;">
+            <documentation description="WTX Map value assignment. Rule number:8 Source Field/Operation:=&quot;Dave&quot; Target Field:CustSNam1:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CustSNam1/"/>
+        </assign>
+        <assign value="&quot;Arnold&quot;">
+            <documentation description="WTX Map value assignment. Rule number:9 Source Field/Operation:=&quot;Arnold&quot; Target Field:CustSNam2:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CustSNam2/"/>
+        </assign>
+        <assign value="&quot;42 Muston Road&quot;">
+            <documentation description="WTX Map value assignment. Rule number:10 Source Field/Operation:=&quot;42 Muston Road&quot; Target Field:AddrDetailLn1:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/AddrDetailLn1/"/>
+        </assign>
+        <assign value="&quot;Mona Vale&quot;">
+            <documentation description="WTX Map value assignment. Rule number:11 Source Field/Operation:=&quot;Mona Vale&quot; Target Field:AddrDetailLn2:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/AddrDetailLn2/"/>
+        </assign>
+        <assign value="&quot;Qld&quot;">
+            <documentation description="WTX Map value assignment. Rule number:12 Source Field/Operation:=&quot;Qld&quot; Target Field:AddrDetailLn3:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/AddrDetailLn3/"/>
+        </assign>
+        <assign value="&quot;AcctRel&quot;">
+            <documentation description="WTX Map value assignment. Rule number:13 Source Field/Operation:=&quot;AcctRel&quot; Target Field:AcctReltInd:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/AcctReltInd/"/>
+        </assign>
+        <assign value="&quot;Authlev&quot;">
+            <documentation description="WTX Map value assignment. Rule number:14 Source Field/Operation:=&quot;Authlev&quot; Target Field:AuthLevel:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/AuthLevel/"/>
+        </assign>
+        <assign value="&quot;MrktBnk&quot;">
+            <documentation description="WTX Map value assignment. Rule number:15 Source Field/Operation:=&quot;MrktBnk&quot; Target Field:MrktBnk:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/MrktBnk/"/>
+        </assign>
+        <assign value="&quot;15/01/1970&quot;">
+            <documentation description="WTX Map value assignment. Rule number:16 Source Field/Operation:=&quot;15/01/1970&quot; Target Field:DateOfBirth:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/DateOfBirth/"/>
+        </assign>
+        <assign value="&quot;121213131&quot;">
+            <documentation description="WTX Map value assignment. Rule number:17 Source Field/Operation:=&quot;121213131&quot; Target Field:ABN:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/ABN/"/>
+        </assign>
+        <assign value="&quot;custype&quot;">
+            <documentation description="WTX Map value assignment. Rule number:18 Source Field/Operation:=&quot;custype&quot; Target Field:CustType:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CustType/"/>
+        </assign>
+        <assign value="&quot;corpCI&quot;">
+            <documentation description="WTX Map value assignment. Rule number:19 Source Field/Operation:=&quot;corpCI&quot; Target Field:CorpCustInd:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/CorpCustInd/"/>
+        </assign>
+        <assign value="&quot;occup&quot;">
+            <documentation description="WTX Map value assignment. Rule number:20 Source Field/Operation:=&quot;occup&quot; Target Field:OwnerType:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/OwnerType/"/>
+        </assign>
+        <assign value="&quot;prdCd&quot;">
+            <documentation description="WTX Map value assignment. Rule number:21 Source Field/Operation:=&quot;prdCd&quot; Target Field:ProdCode:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/ProdCode/"/>
+        </assign>
+        <assign value="&quot;subsyst&quot;">
+            <documentation description="WTX Map value assignment. Rule number:22 Source Field/Operation:=&quot;subsyst&quot; Target Field:SubSystCode:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/SubSystCode/"/>
+        </assign>
+        <assign value="&quot;subpr&quot;">
+            <documentation description="WTX Map value assignment. Rule number:23 Source Field/Operation:=&quot;subpr&quot; Target Field:SubProdCode:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/SubProdCode/"/>
+        </assign>
+        <assign value="&quot;xref&quot;">
+            <documentation description="WTX Map value assignment. Rule number:24 Source Field/Operation:=&quot;xref&quot; Target Field:PdctXrefNum:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/PdctXrefNum/"/>
+        </assign>
+        <assign value="&quot;PdDesc&quot;">
+            <documentation description="WTX Map value assignment. Rule number:25 Source Field/Operation:=&quot;PdDesc&quot; Target Field:PdDesc:Customer:ListOfCustomers:CustData:CustDtlRs:BusinessData:SGServiceReply Element:Global:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/BusinessData/CustDtlRs/CustData/ListOfCustomers/Customer/PdDesc/"/>
+        </assign>
+        <move>
+            <documentation description="WTX Map association. rule number:26 Source Field/Operation:=TRCDNAME_18 Field:HBHDR_RPY Group:HBHCHKRPY Target Field:SyhInterfaceCode:SyhServiceRequestName:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/TRCDNAME"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhServiceRequestName/SyhInterfaceCode/"/>
+        </move>
+        <move>
+            <documentation description="WTX Map association. rule number:27 Source Field/Operation:=TRMLIDNT_19 Field:HBHDR_RPY Group:HBHCHKRPY Target Field:SyhServiceCode:SyhServiceRequestName:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/TRMLIDNT"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhServiceRequestName/SyhServiceCode/"/>
+        </move>
+        <convert defaultValue="0">
+            <documentation description="WTX Map association. rule number:28 Source Field/Operation:=NUMBERTOTEXT(PORTIDNF_20 Field:HBHDR_RPY Group:HBHCHKRPY) Target Field:SyhRequestVersion:SyhServiceRequestName:SGServiceReply Element:Global:SGServiceReply"/>
+            <input path="$ComIbmMessageAssembly_HBHCHKRPY/HBHCHKRPY/HBHDR_RPY/PORTIDNF" var="PORTIDNF_20"/>
+            <output path="$ComIbmMessageAssembly_SGServiceReply/SGServiceReply/SyhServiceRequestName/SyhRequestVersion/"/>
+        </convert>
+        <assign value="&quot;1.0&quot;">
+            <documentation description="WTX Map value assignment. Rule number:29 Source Field/Operation:=&quot;1.0&quot; Target Field:version:Decl Prolog:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_Decl/Decl/version/"/>
+        </assign>
+        <assign value="&quot;Yes&quot;">
+            <documentation description="WTX Map value assignment. Rule number:30 Source Field/Operation:=&quot;Yes&quot; Target Field:standalone:Decl Prolog:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_Decl/Decl/standalone/"/>
+        </assign>
+        <assign value="&quot;UTF-8&quot;">
+            <documentation description="WTX Map value assignment. Rule number:31 Source Field/Operation:=&quot;UTF-8&quot; Target Field:encoding:Decl Prolog:SGServiceReply"/>
+            <output path="$ComIbmMessageAssembly_Decl/Decl/encoding/"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

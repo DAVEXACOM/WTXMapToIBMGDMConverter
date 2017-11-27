@@ -1,0 +1,6 @@
+On the subject of a dictionary:
+1) A substitution dictionary plus In Out schemas, source meta file, direction etc, functions i.e. =NUMBERTOTEXT is Convert
+
+2) Modify the DFDL model by hand after import of COBOL so its names match the WTX TT
+
+3) create a DFDL generator. JAxB to create the DFDL.xsd (short form) based on type tree export. Use instead of the COBOL importer

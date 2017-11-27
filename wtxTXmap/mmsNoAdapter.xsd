@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="MapSettings">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="MapAudit"/>
+                <xsd:element ref="MapTrace"/>
+                <xsd:choice>
+                    <xsd:element ref="WorkSpace.File"/>
+                    <xsd:element ref="WorkSpace.Memory"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="Century.Current"/>
+                    <xsd:element ref="Century.Sliding"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="Validation.Standard"/>
+                    <xsd:element ref="Validation.Custom"/>
+                </xsd:choice>
+                <xsd:element ref="Retry"/>
+                <xsd:choice>
+                    <xsd:element ref="Warnings.Every"/>
+                    <xsd:element ref="Warnings.Custom"/>
+                </xsd:choice>
+                <xsd:element ref="CodePageFallback"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="MapAudit">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="BurstAudit"/>
+                <xsd:element ref="SummaryAudit"/>
+                <xsd:element ref="SettingsAudit"/>
+                <xsd:choice>
+                    <xsd:element ref="AuditLocation.File"/>
+                    <xsd:element ref="AuditLocation.Memory"/>
+                </xsd:choice>
+            </xsd:sequence>
+            <xsd:attribute name="Switch" use="required">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ON"/>
+                        <xsd:enumeration value="OFF"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="BurstAudit">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="Data.Always"/>
+                    <xsd:element ref="Data.Never"/>
+                    <xsd:element ref="Data.OnBurstError"/>
+                    <xsd:element ref="Data.OnBurstWarningOrError"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="Execution.Always"/>
+                    <xsd:element ref="Execution.Never"/>
+                    <xsd:element ref="Execution.OnBurstError"/>
+                    <xsd:element ref="Execution.OnBurstWarningOrError"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Data.Always">
+        <xsd:complexType>
+            <xsd:attribute default="WrongSize" name="SizeValidation">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="WrongSize"/>
+                        <xsd:enumeration value="TooLongTooShort"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Data.Never">
+        <xsd:complexType>
+            <xsd:attribute default="WrongSize" name="SizeValidation">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="WrongSize"/>
+                        <xsd:enumeration value="TooLongTooShort"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Data.OnBurstError">
+        <xsd:complexType>
+            <xsd:attribute default="WrongSize" name="SizeValidation">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="WrongSize"/>
+                        <xsd:enumeration value="TooLongTooShort"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Data.OnBurstWarningOrError">
+        <xsd:complexType>
+            <xsd:attribute default="WrongSize" name="SizeValidation">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="WrongSize"/>
+                        <xsd:enumeration value="TooLongTooShort"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Execution.Always">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Execution.Never">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Execution.OnBurstError">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Execution.OnBurstWarningOrError">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="SummaryAudit">
+        <xsd:complexType>
+            <xsd:attribute default="Never" name="execution">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Always"/>
+                        <xsd:enumeration value="Never"/>
+                        <xsd:enumeration value="OnError"/>
+                        <xsd:enumeration value="OnWarningOrError"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SettingsAudit">
+        <xsd:complexType>
+            <xsd:attribute default="Never" name="data">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Always"/>
+                        <xsd:enumeration value="Never"/>
+                        <xsd:enumeration value="OnError"/>
+                        <xsd:enumeration value="OnWarningOrError"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="Never" name="map">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Always"/>
+                        <xsd:enumeration value="Never"/>
+                        <xsd:enumeration value="OnError"/>
+                        <xsd:enumeration value="OnWarningOrError"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="AuditLocation.File">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="Directory.Map"/>
+                    <xsd:element ref="Directory.Custom"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="FileName.Default"/>
+                    <xsd:element ref="FileName.Unique"/>
+                    <xsd:element ref="FileName.Custom"/>
+                </xsd:choice>
+            </xsd:sequence>
+            <xsd:attribute name="action" use="optional">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Create"/>
+                        <xsd:enumeration value="Append"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="AuditLocation.Memory">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute default="OFF" name="sized">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="ON"/>
+                                <xsd:enumeration value="OFF"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="MapTrace">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="ContentTrace.File"/>
+            </xsd:sequence>
+            <xsd:attribute default="OFF" name="Switch">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ON"/>
+                        <xsd:enumeration value="OFF"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ContentTrace.File">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="TraceLocation.File"/>
+                <xsd:choice>
+                    <xsd:element ref="InputContentTrace.ALL"/>
+                    <xsd:element ref="InputContentTrace.CARD"/>
+                    <xsd:element ref="InputContentTrace.RANGE"/>
+                    <xsd:element ref="InputContentTrace.OFF"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="RulesTrace.ALL"/>
+                    <xsd:element ref="RulesTrace.CARD"/>
+                    <xsd:element ref="RulesTrace.OFF"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="SummaryContentTrace.ON"/>
+                    <xsd:element ref="SummaryContentTrace.OFF"/>
+                </xsd:choice>
+            </xsd:sequence>
+            <xsd:attribute default="OFF" name="Switch">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ON"/>
+                        <xsd:enumeration value="OFF"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="TraceLocation.File">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="Directory.Map"/>
+                    <xsd:element ref="Directory.Custom"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="FileName.Default"/>
+                    <xsd:element ref="FileName.Custom"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Directory.Map">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Directory.Custom" type="xsd:string"/>
+    <xsd:element name="FileName.Default">
+        <xsd:complexType>
+            <xsd:attribute name="action" use="optional">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Create"/>
+                        <xsd:enumeration value="Append"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="FileName.Unique">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="FileName.Custom">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute default="Create" name="action">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="Create"/>
+                                <xsd:enumeration value="Append"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="InputContentTrace.ALL">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="RulesTrace.ALL">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="InputContentTrace.CARD">
+        <xsd:complexType>
+            <xsd:attribute name="CardNumber" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RulesTrace.CARD">
+        <xsd:complexType>
+            <xsd:attribute name="CardNumber" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="InputContentTrace.RANGE">
+        <xsd:complexType>
+            <xsd:attribute name="StartObject" type="xsd:string" use="required"/>
+            <xsd:attribute name="EndObject" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="InputContentTrace.OFF">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="RulesTrace.OFF">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="SummaryContentTrace.ON">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="SummaryContentTrace.OFF">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="WorkSpace.Memory">
+        <xsd:complexType>
+            <xsd:attribute name="PageSize" type="xsd:string" use="required"/>
+            <xsd:attribute name="PageCount" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="WorkSpace.File">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="Directory.Map"/>
+                    <xsd:element ref="Directory.Custom"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element ref="WorkFilePrefix.MapName"/>
+                    <xsd:element ref="WorkFilePrefix.Unique"/>
+                </xsd:choice>
+            </xsd:sequence>
+            <xsd:attribute name="PageSize" type="xsd:string" use="required"/>
+            <xsd:attribute name="PageCount" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="WorkFilePrefix.MapName">
+        <xsd:complexType>
+            <xsd:attribute default="Delete" name="action">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Delete"/>
+                        <xsd:enumeration value="Create"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="WorkFilePrefix.Unique">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Century.Current">
+        <xsd:annotation>
+            <xsd:documentation> these are always deleted </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Century.Sliding">
+        <xsd:complexType>
+            <xsd:attribute name="CCLookup" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Validation.Standard">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="Validation.Custom">
+        <xsd:complexType>
+            <xsd:attribute default="Continue" name="OnValidationError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Continue"/>
+                        <xsd:enumeration value="Stop"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="Validate" name="RestrictionError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Validate"/>
+                        <xsd:enumeration value="IgnoreNoWarnings"/>
+                        <xsd:enumeration value="Ignore"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="Validate" name="SizeError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Validate"/>
+                        <xsd:enumeration value="Ignore"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="Validate" name="PresentationError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Validate"/>
+                        <xsd:enumeration value="Ignore"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Warnings.Every">
+        <xsd:complexType>
+            <xsd:attribute default="warn" name="action">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Warnings.Custom">
+        <xsd:complexType>
+            <xsd:attribute default="warn" name="OneOrMoreOutputsWasInvalid">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="PageUseCountError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="InputValidButUnknownDataFound">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="OutputTypeInError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="OutputTypeContainsError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="InputTypeContainsError">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="OutputValidButUnknownDataFound">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute default="warn" name="TooFewPagesRequestedMoreAllocated">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ignore"/>
+                        <xsd:enumeration value="fail"/>
+                        <xsd:enumeration value="warn"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CodePageFallback">
+        <xsd:complexType>
+            <xsd:attribute default="SKIP" name="Fallback">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="SKIP"/>
+                        <xsd:enumeration value="SUBSTITUTE"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute name="SubstituteValue" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Retry">
+        <xsd:complexType>
+            <xsd:attribute name="Switch" use="required">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="ON"/>
+                        <xsd:enumeration value="OFF"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute name="MaxAttempts" type="xsd:string" use="optional"/>
+            <xsd:attribute name="Interval" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="MMS">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" ref="Map"/>
+            </xsd:sequence>
+            <xsd:attribute name="mapcount" type="xsd:string" use="required"/>
+            <xsd:attribute name="path" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Map">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="MapSettings"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Remark"/>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="DataAuditSettings"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Input"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Output"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Unresolved"/>
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required"/>
+            <xsd:attribute name="InputCount" type="xsd:string" use="required"/>
+            <xsd:attribute name="OutputCount" type="xsd:string" use="required"/>
+            <xsd:attribute name="AuditCount" type="xsd:string" use="required"/>
+            <xsd:attribute name="RemarkCount" type="xsd:string" use="required"/>
+            <xsd:attribute name="Source" type="xsd:string" use="optional"/>
+            <xsd:attribute default="WTX" name="Runtime">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="WTX"/>
+                        <xsd:enumeration value="WDP"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Remark">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="Topic" type="xsd:string" use="required"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataAuditSettings">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AuditObject"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="AuditObject">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute default="Occurrence" name="track">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="Count"/>
+                                <xsd:enumeration value="Occurrence"/>
+                                <xsd:enumeration value="Warning"/>
+                                <xsd:enumeration value="Error"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                    <xsd:attribute default="NONE" name="details">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="NONE"/>
+                                <xsd:enumeration value="Occurrence"/>
+                                <xsd:enumeration value="Warning"/>
+                                <xsd:enumeration value="Error"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                    <xsd:attribute default="NONE" name="itemdata">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="NONE"/>
+                                <xsd:enumeration value="Occurrence"/>
+                                <xsd:enumeration value="Warning"/>
+                                <xsd:enumeration value="Error"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Unresolved">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="UnresolvedName"/>
+                <xsd:element ref="UnresolvedRule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="UnresolvedName" type="xsd:string"/>
+    <xsd:element name="UnresolvedRule" type="xsd:string"/>
+    <xsd:element name="Input">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="Schema"/>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="NativeXSDCustomization"/>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="NameSpaces"/>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="SourceRule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Schema">
+        <xsd:complexType>
+            <xsd:attribute name="cardnumber" type="xsd:string" use="required"/>
+            <xsd:attribute name="cardname" type="xsd:string" use="required"/>
+            <xsd:attribute name="typetree" type="xsd:string" use="required"/>
+            <xsd:attribute name="type" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SourceRule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="FetchAs"/>
+                <xsd:element ref="GET"/>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="Backup"/>
+                <xsd:element maxOccurs="1" minOccurs="0" ref="MetaDataLocation"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="FetchAs">
+        <xsd:complexType>
+            <xsd:choice>
+                <xsd:element ref="Integral"/>
+                <xsd:element ref="Burst"/>
+            </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Integral">
+        <xsd:complexType>
+            <xsd:attribute default="Create" name="workarea">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="Create"/>
+                        <xsd:enumeration value="Reuse"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute name="fetchunit" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Burst">
+        <xsd:complexType>
+            <xsd:attribute name="fetchunit" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Output">
+     <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Schema"/>
+        <xsd:element ref="NameSpaces"/>
+        <xsd:element ref="TargetRule"/>
+        <xsd:element ref="SyntaxCard"/>
+        <xsd:element maxOccurs="unbounded" ref="MapRule"/>
+      </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element> 
+     
+    <xsd:element name="MapRule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="objectset"/>
+        <xsd:element ref="objectrule"/>
+      </xsd:sequence>
+      <xsd:attribute name="rulenumber" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>  
+  <xsd:element name="objectset" type="xsd:string"/>
+  <xsd:element name="objectrule" type="xsd:string"/>
+  <xsd:element name="TargetRule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="PUT"/>
+        <xsd:element ref="Backup"/>
+        <xsd:element minOccurs="0" ref="MetaDataLocation"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SyntaxCard" type="xsd:string"/>
+  <xsd:element name="MetaDataLocation" type="xsd:string"/>
+  <xsd:element name="PUT">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FILE_Target"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>  
+   <xsd:element name="FILE_Target">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FilePath"/>
+        <xsd:element ref="FILE_Target.Transaction"/>
+        <xsd:element ref="Retry"/>
+        <xsd:element ref="DocumentVerification"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FilePath" type="xsd:string"/>
+  <xsd:element name="FILE_Target.Transaction">
+    <xsd:complexType>
+      <xsd:attribute name="OnSuccess" type="xsd:string"/>
+      <xsd:attribute name="OnFailure" type="xsd:string"/>
+      <xsd:attribute name="Scope" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name="DocumentVerification" type="xsd:string"/>   
+    <xsd:element name="NativeXSDCustomization">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="NameSpaces">
+        <xsd:complexType/>
+    </xsd:element>
+  <xsd:element name="GET">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FILE_Source"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+    <xsd:element name="FILE_Source">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="FilePath"/>
+        <xsd:element ref="FILE_Source.Transaction"/>
+        <xsd:element ref="Retry"/>
+        <xsd:element ref="DocumentVerification"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+   <xsd:element name="FILE_Source.Transaction">
+    <xsd:complexType>
+      <xsd:attribute name="OnSuccess" type="xsd:string"/>
+      <xsd:attribute name="OnFailure" type="xsd:string"/>
+      <xsd:attribute name="Scope" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Backup">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="BackupLocation.File"/>
+      </xsd:sequence>
+      <xsd:attribute name="Switch" type="xsd:string"/>
+      <xsd:attribute name="When" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+   <xsd:element name="BackupLocation.File">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Directory.Map"/>
+        <xsd:element ref="FileName.Unique"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

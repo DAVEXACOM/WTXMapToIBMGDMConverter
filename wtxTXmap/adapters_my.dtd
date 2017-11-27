@@ -1,0 +1,15 @@
+<!-- MyAdapter is for user defined adapters -->
+
+<!ELEMENT MyAdapter_Source (Command?, MyAdapter_Source.Transaction?, Retry?, DocumentVerification?)>
+<!ELEMENT MyAdapter_Target (Command?, MyAdapter_Target.Transaction?, Retry?, DocumentVerification?)>
+
+<!ELEMENT MyAdapter_Source.Transaction EMPTY>
+
+<!ATTLIST MyAdapter_Source.Transaction OnFailure (Rollback | Commit) "Commit">
+<!ATTLIST MyAdapter_Source.Transaction Scope (Map | Burst | Card) "Map">
+
+<!ELEMENT MyAdapter_Target.Transaction EMPTY>
+<!ATTLIST MyAdapter_Target.Transaction OnSuccess CDATA #REQUIRED>
+<!ATTLIST MyAdapter_Target.Transaction OnFailure (Rollback | Commit) "Commit">
+<!ATTLIST MyAdapter_Target.Transaction Scope (Map | Burst | Card) "Map">
+

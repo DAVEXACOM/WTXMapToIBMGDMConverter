@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MMS SYSTEM "C:\Users\IBM_ADMIN\IBM\IIBT10\IBMGDMConverterV1.0\wtxTXmap\mms.dtd">
+<MMS mapcount="3" path="C:\WMBWKS\TransformationOptions\TxTransformationProject\SGServiceHBHCHK.mms">
+ <Map name="SGServiceOut" InputCount="0" OutputCount="1" AuditCount="0" RemarkCount="0" Source="" Runtime="WTX">
+  <MapSettings>
+   <MapAudit Switch="OFF">
+    <BurstAudit>
+     <Data.Never SizeValidation="WrongSize"/>
+     <Execution.Never/>
+    </BurstAudit>
+    <SummaryAudit execution="Always"/>
+    <SettingsAudit data="Never" map="Never"/>
+    <AuditLocation.File>
+     <Directory.Map/>
+     <FileName.Default action="Create"/>
+    </AuditLocation.File>
+   </MapAudit>
+   <MapTrace Switch="OFF">
+    <ContentTrace.File Switch="OFF">
+     <TraceLocation.File>
+      <Directory.Map/>
+      <FileName.Default/>
+     </TraceLocation.File>
+     <InputContentTrace.OFF/>
+     <RulesTrace.OFF/>
+     <SummaryContentTrace.OFF/>
+    </ContentTrace.File>
+   </MapTrace>
+   <WorkSpace.File PageSize="64" PageCount="8">
+    <Directory.Map/>
+    <WorkFilePrefix.MapName action="Delete"/>
+   </WorkSpace.File>
+   <Century.Current/>
+   <Validation.Standard/>
+   <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+   <Warnings.Every action="warn"/>
+   <CodePageFallback Fallback="SKIP"/>
+  </MapSettings>
+  <Output>
+    <Schema cardnumber="1"
+            cardname="SGServiceOut"
+            typetree="SGServiceAll.mtt"
+            type="Doc XSD"/>
+    <NameSpaces/>
+    <TargetRule>
+      <PUT>
+       <FILE_Target>
+        <FilePath>SGOut.xml</FilePath>
+        <FILE_Target.Transaction OnSuccess="Create" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Target>
+      </PUT>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+      <MetaDataLocation>SGServiceAll.xsd</MetaDataLocation>
+    </TargetRule>
+    <SyntaxCard>OFF</SyntaxCard>
+    <MapRule rulenumber="1">
+      <objectset>version:Decl Prolog:SGServiceOut</objectset>
+      <objectrule>=&quot;1.0&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="2">
+      <objectset>encoding:Decl Prolog:SGServiceOut</objectset>
+      <objectrule>=&quot;UTF-8&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="3">
+      <objectset>standalone:Decl Prolog:SGServiceOut</objectset>
+      <objectrule>=NONE</objectrule>
+    </MapRule>
+    <MapRule rulenumber="4">
+      <objectset>CustNum:CustDtlRq:BusinessData:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;46162367&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="5">
+      <objectset>SrhSource:SrhIdentity:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;CRMZZZZZ&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="6">
+      <objectset>SrhOrigSystem:SrhIdentity:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;CRM&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="7">
+      <objectset>SrhUserContext:SrhIdentity:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;M111111&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="8">
+      <objectset>SrhFunctional:SrhIdentity:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;SBXX&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="9">
+      <objectset>SrhInterfaceCode:SrhServiceRequestName:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;CUST&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="10">
+      <objectset>SrhServiceCode:SrhServiceRequestName:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;SCUSTNUM&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="11">
+      <objectset>SrhRequestVersion:SrhServiceRequestName:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;V002&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="12">
+      <objectset>SrhExtension:SGServiceRequest Element:Global:SGServiceOut</objectset>
+      <objectrule>=&quot;LBREAK=YES,NOTYPEDEF=YES&quot;</objectrule>
+    </MapRule>
+  </Output>
+ </Map>
+ <Map name="SGServTrimOut" InputCount="0" OutputCount="1" AuditCount="0" RemarkCount="0" Source="" Runtime="WTX">
+  <MapSettings>
+   <MapAudit Switch="OFF">
+    <BurstAudit>
+     <Data.Never SizeValidation="WrongSize"/>
+     <Execution.Never/>
+    </BurstAudit>
+    <SummaryAudit execution="Always"/>
+    <SettingsAudit data="Never" map="Never"/>
+    <AuditLocation.File>
+     <Directory.Map/>
+     <FileName.Default action="Create"/>
+    </AuditLocation.File>
+   </MapAudit>
+   <MapTrace Switch="OFF">
+    <ContentTrace.File Switch="OFF">
+     <TraceLocation.File>
+      <Directory.Map/>
+      <FileName.Default/>
+     </TraceLocation.File>
+     <InputContentTrace.OFF/>
+     <RulesTrace.OFF/>
+     <SummaryContentTrace.OFF/>
+    </ContentTrace.File>
+   </MapTrace>
+   <WorkSpace.File PageSize="64" PageCount="8">
+    <Directory.Map/>
+    <WorkFilePrefix.MapName action="Delete"/>
+   </WorkSpace.File>
+   <Century.Current/>
+   <Validation.Standard/>
+   <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+   <Warnings.Every action="warn"/>
+   <CodePageFallback Fallback="SKIP"/>
+  </MapSettings>
+  <Output>
+    <Schema cardnumber="1"
+            cardname="SGServTrimOut"
+            typetree="SGServiceTrim.mtt"
+            type="Doc XSD"/>
+    <NameSpaces/>
+    <TargetRule>
+      <PUT>
+       <FILE_Target>
+        <FilePath>SGTrimOut.xml</FilePath>
+        <FILE_Target.Transaction OnSuccess="Create" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Target>
+      </PUT>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+      <MetaDataLocation>SGServiceAll.xsd</MetaDataLocation>
+    </TargetRule>
+    <SyntaxCard>OFF</SyntaxCard>
+    <MapRule rulenumber="1">
+      <objectset>SrhInterfaceCode:SrhServiceRequestName:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;1&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="2">
+      <objectset>SrhServiceCode:SrhServiceRequestName:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;2&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="3">
+      <objectset>SrhRequestVersion:SrhServiceRequestName:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;3&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="4">
+      <objectset>SrhSource:SrhIdentity:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;4&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="5">
+      <objectset>SrhOrigSystem:SrhIdentity:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;5&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="6">
+      <objectset>SrhUserContext:SrhIdentity:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;6&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="7">
+      <objectset>SrhFunctional:SrhIdentity:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;7&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="8">
+      <objectset>SrhExtension:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;8&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="9">
+      <objectset>CustNum:CustDtlRq:BusinessData:SGServiceRequest Element:Global:SGServTrimOut</objectset>
+      <objectrule>=&quot;9&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="10">
+      <objectset>version:Decl Prolog:SGServTrimOut</objectset>
+      <objectrule>=&quot;1.0&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="11">
+      <objectset>encoding:Decl Prolog:SGServTrimOut</objectset>
+      <objectrule>=&quot;UTF-8&quot;</objectrule>
+    </MapRule>
+    <MapRule rulenumber="12">
+      <objectset>standalone:Decl Prolog:SGServTrimOut</objectset>
+      <objectrule>=NONE</objectrule>
+    </MapRule>
+  </Output>
+ </Map>
+ <Map name="SGServReqToHBHReq" InputCount="1" OutputCount="1" AuditCount="0" RemarkCount="0" Source="" Runtime="WTX">
+  <MapSettings>
+   <MapAudit Switch="OFF">
+    <BurstAudit>
+     <Data.Never SizeValidation="WrongSize"/>
+     <Execution.Never/>
+    </BurstAudit>
+    <SummaryAudit execution="Always"/>
+    <SettingsAudit data="Never" map="Never"/>
+    <AuditLocation.File>
+     <Directory.Map/>
+     <FileName.Default action="Create"/>
+    </AuditLocation.File>
+   </MapAudit>
+   <MapTrace Switch="OFF">
+    <ContentTrace.File Switch="OFF">
+     <TraceLocation.File>
+      <Directory.Map/>
+      <FileName.Default/>
+     </TraceLocation.File>
+     <InputContentTrace.OFF/>
+     <RulesTrace.OFF/>
+     <SummaryContentTrace.OFF/>
+    </ContentTrace.File>
+   </MapTrace>
+   <WorkSpace.File PageSize="64" PageCount="8">
+    <Directory.Map/>
+    <WorkFilePrefix.MapName action="Delete"/>
+   </WorkSpace.File>
+   <Century.Current/>
+   <Validation.Standard/>
+   <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+   <Warnings.Every action="warn"/>
+   <CodePageFallback Fallback="SKIP"/>
+  </MapSettings>
+  <Input>
+    <Schema cardnumber="1"
+            cardname="SGSAllIn"
+            typetree="SGServiceAll.mtt"
+            type="Doc XSD"/>
+    <NameSpaces/>
+    <SourceRule>
+      <FetchAs>
+       <Integral workarea="Create" fetchunit="S"/>
+      </FetchAs>
+      <GET>
+       <FILE_Source>
+        <FilePath>SGOut.xml</FilePath>
+        <FILE_Source.Transaction OnSuccess="Keep" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Source>
+      </GET>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+      <MetaDataLocation>SGServiceAll.xsd</MetaDataLocation>
+    </SourceRule>
+  </Input>
+  <Output>
+    <Schema cardnumber="1"
+            cardname="HBHCHKReqOut"
+            typetree="HB37.mtt"
+            type="HB_HCHKREQ Record CopyBook"/>
+    <NameSpaces/>
+    <TargetRule>
+      <PUT>
+       <FILE_Target>
+        <FilePath>HBHCHKReq.txt</FilePath>
+        <FILE_Target.Transaction OnSuccess="Create" OnFailure="Rollback" Scope="Map"/>
+        <Retry Switch="OFF" MaxAttempts="0" Interval="0"/>
+        <DocumentVerification>Never</DocumentVerification>
+       </FILE_Target>
+      </PUT>
+      <Backup Switch="OFF" When="Always">
+       <BackupLocation.File>
+        <Directory.Map/>
+        <FileName.Unique/>
+       </BackupLocation.File>
+      </Backup>
+    </TargetRule>
+    <SyntaxCard>OFF</SyntaxCard>
+    <MapRule rulenumber="1">
+      <objectset>IMSLL_8 Field:HBHCHKReqOut</objectset>
+      <objectrule>=0</objectrule>
+    </MapRule>
+    <MapRule rulenumber="2">
+      <objectset>IMSZZ_9 Field:HBHCHKReqOut</objectset>
+      <objectrule>=0</objectrule>
+    </MapRule>
+    <MapRule rulenumber="3">
+      <objectset>TRCDNAME_11 Field:HBHDR_REQ Group:HBHCHKReqOut</objectset>
+      <objectrule>=SrhInterfaceCode:SrhServiceRequestName:SGServiceRequest Element:Global:SGSAllIn</objectrule>
+    </MapRule>
+    <MapRule rulenumber="4">
+      <objectset>TRMLIDNT_12 Field:HBHDR_REQ Group:HBHCHKReqOut</objectset>
+      <objectrule>=SrhSource:SrhIdentity:SGServiceRequest Element:Global:SGSAllIn</objectrule>
+    </MapRule>
+    <MapRule rulenumber="5">
+      <objectset>PORTIDNF_13 Field:HBHDR_REQ Group:HBHCHKReqOut</objectset>
+      <objectrule>=TEXTTONUMBER(LEFT(CustNum:CustDtlRq:BusinessData:SGServiceRequest Element:Global:SGSAllIn,5))</objectrule>
+    </MapRule>
+  </Output>
+ </Map>
+</MMS>
