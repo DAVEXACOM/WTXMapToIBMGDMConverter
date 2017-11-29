@@ -274,11 +274,19 @@ import com.ibm.wtxEXP.*;
 	        // if it starts with an =" its an assign = so set txFunction = ASSIGNTEXT
 	        // it contains a "(" in which cases it is a function and we want to set txFunction = substring from 1 to the first "("
 	        // if it's none of the above it must be either an input field to output file move
-	        
+	        // @DANext1 need to deal with special case which is =NONE which I think means we need to do nothing in GDM i.e. skip the rule
+            /* From the Knowledgecenter - Generating no output If an output is optional, you may not want to generate the output for that data object. 
+             * In situations in which you do not want to generate output for a data object on an output card, enter a special rule. 
+             * The rule for generating none of an output is simply: =NONE
+	        */
 	        
 	        String txFunction = MyMapRule.getObjectrule().substring(1, MyMapRule.getObjectrule().length()).toUpperCase();
 	        System.out.println("Determine processing for the function:"+ txFunction);
-            if (isNumeric(txFunction)) { txFunction = "ASSIGNNUM";
+            
+	        if (isNumeric(txFunction)) { txFunction = "NONE";
+			System.out.println("Modifying the main function type to function:"+ txFunction);                                              
+		                                   } // its an ="NONE" assign
+	        if (isNumeric(txFunction)) { txFunction = "ASSIGNNUM";
             								System.out.println("Modifying the main function type to function:"+ txFunction);                                              
             							   } // its a numerical assign
             if (txFunction.startsWith("\"")) { txFunction = "ASSIGNTEXT";
@@ -334,8 +342,14 @@ import com.ibm.wtxEXP.*;
 		              System.out.println("We'll do an assign");
 		              
 		              JAXBElement<Assign> AssignJaxbElT = factory.createAssign(buildAssign(factory, MyMapDecl, MyOutput, MyMapRule, dictionary));				
-					  MyMapDecl.getNested().add(AssignJaxbElT);
+					  MyMapDecl.getNested().add(AssignJaxbElT);           
+		          break;
+	           case "NONE" :
+		              System.out.println("NONE detected:"+MyMapRule.getObjectrule().substring(1, MyMapRule.getObjectrule().length())); 
+		              System.out.println("We'll do an assign. setting NONE");
 		              
+		              JAXBElement<Assign> AssignJaxbElZ = factory.createAssign(buildAssign(factory, MyMapDecl, MyOutput, MyMapRule, dictionary));				
+					  MyMapDecl.getNested().add(AssignJaxbElZ);
 		          break;
 	           default :
 		              System.out.println("Default (Move) or as yet unsupported function detected:"+MyMapRule.getObjectrule().substring(1, MyMapRule.getObjectrule().length())); 
