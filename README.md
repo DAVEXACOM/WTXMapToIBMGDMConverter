@@ -19,7 +19,7 @@ The ParseWTXXMLSerialMSL.java class is the executable code and provides demonstr
 
 The IBM Integration Community article "IBM Transformation Extender (WTX) to Graphical Data Map (GDM) Conversion Tool (Prototype)" is under construction and will have more information on running the tool. See article at link:
 
-https://developer.ibm.com/integration/blog/linkTocome/
+https://community.ibm.com/community/user/integration/viewdocument/wtx-transformation-extender-map-t?CommunityKey=77544459-9fda-40da-ae0b-fc8c76f0ce18&tab=librarydocuments
 
 The GeneratedMapTargetApp\Documentation folder also has document and diagrams
 
